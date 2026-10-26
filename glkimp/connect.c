@@ -30,6 +30,22 @@ static struct settings_struct *settings = (void*)wbuf;
 static int readfd = 0;
 static int sendfd = 1;
 
+/* The interpreter normally talks to the app over stdin and stdout. When it
+   runs inside the app process (iOS, where processes cannot be spawned) the
+   host hands it a pair of pipes instead. */
+void gli_set_pipe_fds(int read_fd, int send_fd)
+{
+    readfd = read_fd;
+    sendfd = send_fd;
+}
+
+/* Close our ends of the pipes: the app sees end of file. */
+void gli_close_pipe_fds(void)
+{
+    close(readfd);
+    close(sendfd);
+}
+
 static int buffering = BUFNONE;
 static int bufferwin = -1;
 static int bufferatt = -1;

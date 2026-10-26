@@ -1,0 +1,1571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		014D4DDBAA682BB1CF28E0F5 /* gi_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D5A7EBA5D985275A1DC79DF /* gi_debug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02E948CF4CBEF53142647C25 /* spatterstart.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA754424BFEF0D01CDE362D /* spatterstart.m */; };
+		02F4B8AEEB6E9A4ACFA55947 /* FileSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DF2AF15F8F97F499945FD6 /* FileSignature.m */; };
+		04024AA2D47E5A7C6E3DB159 /* process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F038541562BE09E96C6D2A9 /* process.cpp */; };
+		0532F4A3513ACDE96B7B911B /* TempLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = F39D6036ED38167453CF94D2 /* TempLibrary.m */; };
+		055C1D3A1EF80672436086DF /* entrypoints_zorkzero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3523D0D7F5D8057CD76A0B9 /* entrypoints_zorkzero.cpp */; };
+		0762BD83D8A850B8532D8766 /* options.h in Headers */ = {isa = PBXBuildFile; fileRef = 7498E102E4AD3E3807579C49 /* options.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		087F580034B9C1078BDA5BFB /* TempSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C89ED9B8902BB25DBD39C46 /* TempSChannel.m */; };
+		08D5C86417745400A654933A /* TempFileRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 8869D82C48F369E981A2CFF4 /* TempFileRef.m */; };
+		08F4B91D2DBE95CCF8C5FDE8 /* memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAF50F917B663EF0C03142C6 /* memory.cpp */; };
+		09D429C21289F38CEE0F41BC /* float.c in Sources */ = {isa = PBXBuildFile; fileRef = 264B9B32C98861DE18F37F4C /* float.c */; };
+		0B155DB7730A6E0CA597FEE1 /* osdep.h in Headers */ = {isa = PBXBuildFile; fileRef = AC812F9404F071F8A44B4D79 /* osdep.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C45362D860A3847DA9F3A26 /* GlkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758CB3C19F61FFDD721A7A0 /* GlkSession.swift */; };
+		0C49500960409117CC201B44 /* decompress_amiga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C93F84FFC96791E7AE6EC109 /* decompress_amiga.cpp */; };
+		0D815245CF70053ACB00BF12 /* blorb.c in Sources */ = {isa = PBXBuildFile; fileRef = 79B4196370676C6005ED9105 /* blorb.c */; };
+		1030CF9CA189F49230D73017 /* image.c in Sources */ = {isa = PBXBuildFile; fileRef = 05CF891CB5660B640FCB3245 /* image.c */; };
+		108DCE171DFFDD44B95EB7C0 /* options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A327F75BDE71C53877056 /* options.cpp */; };
+		1264FA97D0C540AD0F15760E /* entrypoints_arthur.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67EC7DA1B56FB867D41062F0 /* entrypoints_arthur.cpp */; };
+		127A3914B8B2DA44A4FBCF43 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747EC9A9C1C1EDDB7F8CDC8 /* Settings.swift */; };
+		12856573C39529035350D94E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EEB29F5C216AF77822560517 /* main.c */; settings = {COMPILER_FLAGS = "-Dmain=spatterlight_terp_main"; }; };
+		13BC8B62EEA07F8078CEFC46 /* gi_blorb.h in Headers */ = {isa = PBXBuildFile; fileRef = 28DC69C7B7AA83B926984977 /* gi_blorb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13EA1A9CA24F1C01D7317B99 /* glkimp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1566F656EDF98975F649239C /* glkimp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1458036DA024B01A9696B39F /* stash.h in Headers */ = {isa = PBXBuildFile; fileRef = E4072CFAA60074320D8880CA /* stash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1588D03F3C0D3EE9FF6EEEA1 /* gi_dispa.c in Sources */ = {isa = PBXBuildFile; fileRef = 73266FC43CDBCAE407072E0E /* gi_dispa.c */; };
+		16356D19B0234F825EC62783 /* TerpRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EC7BF70920A4D2A4F4755 /* TerpRuntime.swift */; };
+		1821FA73C3D8B7A09E303E03 /* event.c in Sources */ = {isa = PBXBuildFile; fileRef = 816EB7A18FE1EE3469E0CB3D /* event.c */; };
+		18FF4A9120372CBC75FE02C3 /* stream.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DEFC7F858723FBC91330D1 /* stream.c */; };
+		1910AF085EE072E2A373E4F5 /* opcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = D5C3F7EC808F071B80020DE8 /* opcodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19A1834DFADDFC07BCADB737 /* objects.h in Headers */ = {isa = PBXBuildFile; fileRef = 65E3D3158D1337D68FA73356 /* objects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19CF021D689112E94E90E302 /* stash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7088CBF84559BA1D41F8956 /* stash.cpp */; };
+		1A3E4A1FCF2C4D6055B51644 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 7241DA148AFF629FFE6DD4BD /* types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B4345DDA0835E4DF2CF6F5C /* heap.c in Sources */ = {isa = PBXBuildFile; fileRef = 15CD19CCC740AF03988A439D /* heap.c */; };
+		1B71B200B3B391CA4312F53B /* stack.h in Headers */ = {isa = PBXBuildFile; fileRef = D98F74844D96562C8ECDB230 /* stack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E5D8539B18610DBA588E2A6 /* cgdate.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B706C38220F8FF7FEB0B67 /* cgdate.c */; };
+		2452EB5B0045390E622FDAFC /* sp_terp_entry.h in Headers */ = {isa = PBXBuildFile; fileRef = DFD9A94DBCEE708A43C0B798 /* sp_terp_entry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24CECC3EA5129C24A4D2F3CA /* TempStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 79170AF76CC959AE009823D6 /* TempStream.m */; };
+		256629A13CE23605C8E7E256 /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = BB9F75D02E68994046FA54FE /* memory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F6D5AD4A6ADB302A719F74 /* journey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5325995D583F7DABCD6A2BAF /* journey.cpp */; };
+		29F71B233D5EC91FB2E09554 /* branch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8D184770158AA71E153DFA /* branch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A52F789B6FE0E9B0599C7F8 /* screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9830C26798C15CA7E39AA9 /* screen.cpp */; };
+		2BA83708FE61A4D148CA849E /* string.c in Sources */ = {isa = PBXBuildFile; fileRef = DA1AD9F3632FC3904696218C /* string.c */; };
+		2E87795423F99A11DC610BD0 /* osdepend.c in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4E1B20AD4057ACFE83160 /* osdepend.c */; };
+		2FFDEAE4B08C46E79379D1FC /* exec.c in Sources */ = {isa = PBXBuildFile; fileRef = 95D49883377D63E9A36F467B /* exec.c */; };
+		302CC8E314237839B4E19FB6 /* NSString+SignatureOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A458285BF8848D3A214B65 /* NSString+SignatureOnly.m */; };
+		337C2FEA6D709A3473655C6F /* entrypoints_shogun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0782D096A03CB50F2AD9ED41 /* entrypoints_shogun.cpp */; };
+		37351A67D0DD84505BCB8D06 /* draw_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25A0163088528D8CF7D47299 /* draw_image.cpp */; };
+		3AA8B3B73058E48175937AB1 /* draw_apple_2.h in Headers */ = {isa = PBXBuildFile; fileRef = F9596CB5C772B846B120485C /* draw_apple_2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B8DB1679F39160B8F5D45B3 /* vm.c in Sources */ = {isa = PBXBuildFile; fileRef = E6B83A683C19032F9722956B /* vm.c */; };
+		3E4F18677CE46C30EBCB21E2 /* io.h in Headers */ = {isa = PBXBuildFile; fileRef = A3534D24170C4E518A28DCF2 /* io.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41BDB990E080D73DF8229D90 /* sound.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E2026700F8330F323C734AB /* sound.c */; };
+		42047F73551216569DDBE89E /* fileref.m in Sources */ = {isa = PBXBuildFile; fileRef = FE243BFE2B9612A7A8317C79 /* fileref.m */; };
+		42A3EA44E190140E9DF9700F /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = 62F3896858E2AC889D062431 /* util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4397F5C5F5CFFED2D2A58019 /* sound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D4B728AF83FD7A3C56B3DF8 /* sound.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45460B40E6C74D8F3BBFB135 /* branch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1CD059475FA0CA308807167 /* branch.cpp */; };
+		46FD8E2FE0D2AEC5A866A3CC /* TempLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E5A0A775D7289FEE96F2BE /* TempLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47B7E9ABDE94E64B23001AB0 /* gi_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D5A7EBA5D985275A1DC79DF /* gi_debug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49A15238DF3F6CFF079D5FD1 /* TempFileRef.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF5B3FA7FBF5FB3200D09BC /* TempFileRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5203AEB76C5A2894AAE0975F /* connect.c in Sources */ = {isa = PBXBuildFile; fileRef = 46B840483CE7D23C87DDC0DE /* connect.c */; };
+		5296EE62157179A2F4397167 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7C1FB2D660F78CB7F5A77 /* SettingsView.swift */; };
+		54D2D4C83D5FC2C8E365AD16 /* TempStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 79170AF76CC959AE009823D6 /* TempStream.m */; };
+		587F10636B31187076A3BCAF /* operand.c in Sources */ = {isa = PBXBuildFile; fileRef = 41843045F33CE316FE3B4A40 /* operand.c */; };
+		5910F63D001A12E31A5030E0 /* fileref.c in Sources */ = {isa = PBXBuildFile; fileRef = FDD4EE45E96E9298E2C40F66 /* fileref.c */; };
+		592B87BD76D9CF18877CC484 /* gi_blorb.c in Sources */ = {isa = PBXBuildFile; fileRef = D0C836A15082E39ED1EACCCB /* gi_blorb.c */; };
+		5ACA8DB39FA604EDBBE6DF73 /* extract_image_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE322693CDD1265C47BFF0E7 /* extract_image_data.cpp */; };
+		5AD6C7CE1BC4185D614535F9 /* messagenames.c in Sources */ = {isa = PBXBuildFile; fileRef = 36138D84187C09266A1A8691 /* messagenames.c */; };
+		5B5A467C4ADE465D797817E3 /* spatterstart.h in Headers */ = {isa = PBXBuildFile; fileRef = A48FA7B514304C49B7B5F96D /* spatterstart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5DD8C12D34B7F1C8030598D5 /* TempSChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = A6F91D69E7DE2D2B07C0F6A4 /* TempSChannel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E0B6F9E8B5435D1C77C3E53 /* sound.c in Sources */ = {isa = PBXBuildFile; fileRef = 0E2026700F8330F323C734AB /* sound.c */; };
+		6272C2E598AEB14F853C10F6 /* FileSignature.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FFB62EC9E88672DD71A5ED4 /* FileSignature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62882630C9E04CADC7FB01BB /* gi_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F13B93E2EA50DFD9681A7A2 /* gi_debug.c */; };
+		63616517F2E6015459D299AE /* draw_border.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E68DB53EEC2670CE57A8B8E5 /* draw_border.cpp */; };
+		639E112E0CF7F8517E856D00 /* connect.c in Sources */ = {isa = PBXBuildFile; fileRef = 46B840483CE7D23C87DDC0DE /* connect.c */; };
+		640D6818C8917BC946B61478 /* FileSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DF2AF15F8F97F499945FD6 /* FileSignature.m */; };
+		654C70D64751FF4AECFFC287 /* gi_dispa.c in Sources */ = {isa = PBXBuildFile; fileRef = 73266FC43CDBCAE407072E0E /* gi_dispa.c */; };
+		6599296C707B917E5EA30EE3 /* image.c in Sources */ = {isa = PBXBuildFile; fileRef = 05CF891CB5660B640FCB3245 /* image.c */; };
+		659A8D99358C04E64A27BE1C /* autosavefiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCA09850F89EC04134CC42 /* autosavefiles.m */; };
+		6736847704481E45076E9EE6 /* TempWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A76F1D33B12C5788ED9747A /* TempWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		673C107835F2F6F873DA44B8 /* GlkDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0E2F7677A3E297F32299C /* GlkDisplay.swift */; };
+		68BF5157A7A61D5D908FC060 /* event.c in Sources */ = {isa = PBXBuildFile; fileRef = 816EB7A18FE1EE3469E0CB3D /* event.c */; };
+		69724CF79DF7701187795A07 /* headless_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 43652886F8338D2C2D91216F /* headless_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A96765327083D0646455BC6 /* messagenames.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CD91057C72A28E7A2EA77C4 /* messagenames.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B0787158CF7BB2F4BD3FD5C /* gi_blorb.h in Headers */ = {isa = PBXBuildFile; fileRef = 28DC69C7B7AA83B926984977 /* gi_blorb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C5599976C3B2DBF4B53D3B7 /* v6_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E21DE6E862A7D03F182FA43 /* v6_definitions.cpp */; };
+		6D6E6622D7034249F0F24237 /* patches.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92EC0974D897102584201AC1 /* patches.cpp */; };
+		6DB6406A7D38DF71CD61A2F1 /* meta.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F47CF7C434389A6EFB46C4 /* meta.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DEABFBA78BA861A46F1EA62 /* v6_shared.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE65A31E171CE096EB40875E /* v6_shared.cpp */; };
+		6E012A8BFE4793E65AD9F993 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E18F733A7C5ACDA7BD2FB /* LibraryViewController.swift */; };
+		6E0E7A69D722AF63EA727955 /* gi_dispa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CB925DECBBA05FA500CED /* gi_dispa.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		70C29485F91466494509454A /* random.h in Headers */ = {isa = PBXBuildFile; fileRef = 012D1BC8F0D3B5E4AC7BB907 /* random.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		712DA34EE1AF1F5E1ADAE4F4 /* zterp.h in Headers */ = {isa = PBXBuildFile; fileRef = F74FFB34D82E77BEBB540AF3 /* zterp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71992F345D301068A2694272 /* NSString+SignatureOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A458285BF8848D3A214B65 /* NSString+SignatureOnly.m */; };
+		74A715D07D607C44BC05024B /* stylehint.c in Sources */ = {isa = PBXBuildFile; fileRef = 97814C0FCF1C327283D0EDCD /* stylehint.c */; };
+		768AF454001314E0553A0B26 /* dict.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4657B16092B8DA1976DEACA4 /* dict.cpp */; };
+		780A58F6C9680BBC01099A62 /* TempSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C89ED9B8902BB25DBD39C46 /* TempSChannel.m */; };
+		78DBD958EDCE26E4453A9DBE /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EA229D20AFDEE9BC2D094 /* Library.swift */; };
+		78F75B2A96153E8364ED3058 /* fileresource.c in Sources */ = {isa = PBXBuildFile; fileRef = B9008854111A25394E435347 /* fileresource.c */; };
+		7ABDA9E1EB62F536442376ED /* mathop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD8F49CBA7F34C90D28BD169 /* mathop.cpp */; };
+		7D92C393C92E647B3CB88014 /* glkimp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1566F656EDF98975F649239C /* glkimp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8000C8F61C38052F8DC6B106 /* NSString+Categories.h in Headers */ = {isa = PBXBuildFile; fileRef = 40B01238FF9433D9115F3A14 /* NSString+Categories.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81826AC4A2E2468D0D492F49 /* sp_terp_entry.c in Sources */ = {isa = PBXBuildFile; fileRef = C43E96A4F21B7FF28A93671A /* sp_terp_entry.c */; };
+		826E9AA360F9B95D077EEF3B /* gi_dispa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CB925DECBBA05FA500CED /* gi_dispa.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8413C65688610DCA400DBB95 /* protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0953D50E5648D6B4BF0698EC /* protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8449163514981796D6DE1C9D /* decompress_vga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4B10A7CB1108B8AE9AD18E /* decompress_vga.cpp */; };
+		85CD857D0C4A1BC10B66963A /* find_graphics_files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC82307F7261B878CE60A56 /* find_graphics_files.cpp */; };
+		863C514B7938E5319C5A6724 /* fileref.h in Headers */ = {isa = PBXBuildFile; fileRef = 746D94721D9F21A69A004658 /* fileref.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8783E0AF3C2D0519CA5D7EC7 /* NSString+Categories.h in Headers */ = {isa = PBXBuildFile; fileRef = 40B01238FF9433D9115F3A14 /* NSString+Categories.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		885181FD9B0120D0C22BC2AB /* draw_apple_2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7D1D686D66DB747C9A6A239 /* draw_apple_2.cpp */; };
+		887B6E412ED3882DFEB78106 /* entrypoints_journey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAA441852D6D1A2548EC65B1 /* entrypoints_journey.cpp */; };
+		8B561FB9B3C5F187A15EA874 /* glk.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610E59C0A14D685034441A9 /* glk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DAA15B37EBD9B1EC38DCBD9 /* memory_allocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 684B293E427528ED0068E461 /* memory_allocation.cpp */; };
+		9094EADD52CDF3843FB1BFDF /* v1234.h in Headers */ = {isa = PBXBuildFile; fileRef = 094B8283FFFC8F850F4EE6C3 /* v1234.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94184F097319D142E370F108 /* unicode.h in Headers */ = {isa = PBXBuildFile; fileRef = 19B72EDFE3E16EF92055F460 /* unicode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94A108925C1E26D741F47FBF /* process.h in Headers */ = {isa = PBXBuildFile; fileRef = EA8263AF5E8B09CDC2C8B5A7 /* process.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94D21DAB321DCCAE3BE190E4 /* gi_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F13B93E2EA50DFD9681A7A2 /* gi_debug.c */; };
+		967350A4CC5A55708EA2C96F /* osdep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CED7D89C5D3B4B32FDE886E /* osdep.cpp */; };
+		96A061B56C75650B8F82ADA2 /* woz2nib.c in Sources */ = {isa = PBXBuildFile; fileRef = 790081E6EA8AFBDE5FF9B136 /* woz2nib.c */; };
+		99C8554507CA0B123D0812ED /* blorb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D4563C57E8B38F56B71676C /* blorb.cpp */; };
+		9A6FC3596A8D5FDC2A3BF11C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E028ABD614626B571CA8C /* GameViewController.swift */; };
+		9A7C6325D66383E1AFF6E2A4 /* iff.h in Headers */ = {isa = PBXBuildFile; fileRef = D98B8871E3B0754C5A0F6D5C /* iff.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C1505A07427A032CFCFAD79 /* GlkWindowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF8C659960BE6664BE247A /* GlkWindowViews.swift */; };
+		9C6E0BC3C7AA286302361E5C /* stylehint.c in Sources */ = {isa = PBXBuildFile; fileRef = 97814C0FCF1C327283D0EDCD /* stylehint.c */; };
+		9D50729092BB69FBD92CA193 /* DebugLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F3F59442332B15FBAF8F370 /* DebugLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E26062DF9DFD231E0FF4516 /* FileSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DF2AF15F8F97F499945FD6 /* FileSignature.m */; };
+		A24008B0813A73DCD70C3404 /* TempFileRef.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF5B3FA7FBF5FB3200D09BC /* TempFileRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A27B29D5324DE8C300DF6635 /* zorkzero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1A7F710F573187773A7DC2 /* zorkzero.cpp */; };
+		A337A4D8DA50AB99017C1679 /* search.c in Sources */ = {isa = PBXBuildFile; fileRef = 22CC1DFE196AF9BB5DDDACD5 /* search.c */; };
+		A3663EBFDBA05EBC84B3320A /* stream.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DEFC7F858723FBC91330D1 /* stream.c */; };
+		A42BA26123F145B7A54614F5 /* v6_specific.h in Headers */ = {isa = PBXBuildFile; fileRef = 502ACE08C97C522C9845989E /* v6_specific.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A461FDDA7DD093E1B4BD2B29 /* glkstart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1D65F0605F0AC892B7AE45C /* glkstart.cpp */; };
+		A5B7131B3525797AC788939B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F507D40C7B0F8F6FD7A9F04 /* AppDelegate.swift */; };
+		A5E0AD3942947DFD8C36E127 /* glkautosave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821A5DA5EC8D449E35B8AF36 /* glkautosave.cpp */; };
+		A68CCC6DA4BBDD9026EC3731 /* glkop.c in Sources */ = {isa = PBXBuildFile; fileRef = 711941E44B748B9ACBA45C24 /* glkop.c */; };
+		A74EF8A68A5A4A0FDF0538D4 /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3EC9320664697009219B11 /* InputBar.swift */; };
+		AAD398DC2DD9CE63118413A5 /* fileresource.c in Sources */ = {isa = PBXBuildFile; fileRef = B9008854111A25394E435347 /* fileresource.c */; };
+		AB1DB4C9275523372F506DD3 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69F9EF7FB4DA2A20898FF8A6 /* random.cpp */; };
+		ABC9577981E0C4AA2097711F /* draw_png.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C51D59D80FDED74827C8AEA4 /* draw_png.cpp */; };
+		AEAB2EAEAEF45A841104CBC0 /* zorkzero_minigames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5D73161716C3B61A5E1CE6 /* zorkzero_minigames.cpp */; };
+		AECFF62E33F6BD8542946483 /* mathop.h in Headers */ = {isa = PBXBuildFile; fileRef = E35A248AB1A36E0B0AD362A1 /* mathop.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF9CA852C70906607581D940 /* v6_image.h in Headers */ = {isa = PBXBuildFile; fileRef = E6ECBFAA35A8DE4235B862DC /* v6_image.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0E85A074A84DEB352B2DD3F /* patches.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6D0DC05CB6C57EA495E0C7 /* patches.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1E2E057368EE7E7C7DBE8CE /* shogun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1BAF02B19EA93CF8721B717 /* shogun.cpp */; };
+		B1F3AB9F391CBEFA1E1E50F8 /* extract_apple_2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89B35373A93C4FAED1AA54B /* extract_apple_2.cpp */; };
+		B3D7D9C644DC01476D0D595E /* fileref.h in Headers */ = {isa = PBXBuildFile; fileRef = 746D94721D9F21A69A004658 /* fileref.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B41536FA60B43B90CBA242E6 /* gestalt.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE5D2C42350AF00DD8437D /* gestalt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4AE64D56E3857E43E9F2EAB /* fileref.c in Sources */ = {isa = PBXBuildFile; fileRef = FDD4EE45E96E9298E2C40F66 /* fileref.c */; };
+		B55B5687DBC80B54163FD52B /* v6_hints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3D176B5C08E91AE8321484C /* v6_hints.cpp */; };
+		B753D910D3BD0B70379DA033 /* bocfel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 850F52B6557779A6257FB4F1 /* bocfel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BA20B41DBCCC195198B2417A /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = E04C1088A630C2C1D732C809 /* misc.c */; };
+		BB5E20A93FF1A49C52F89F30 /* TempSChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = A6F91D69E7DE2D2B07C0F6A4 /* TempSChannel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC602E909418C50E028DEEBE /* iff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80D12D6352CB6092B50EDF98 /* iff.cpp */; };
+		BD01FF49DF0A0B49747E25CE /* glulxe.h in Headers */ = {isa = PBXBuildFile; fileRef = 5268B9C0FD2A0A01B5FC6E9C /* glulxe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD52EDEACD639BCE858AD7E2 /* DebugLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F3F59442332B15FBAF8F370 /* DebugLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD83D503B718F52A38CB9920 /* blorb.c in Sources */ = {isa = PBXBuildFile; fileRef = 79B4196370676C6005ED9105 /* blorb.c */; };
+		BDF7C48CE928E8A162AA54F7 /* protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0953D50E5648D6B4BF0698EC /* protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE48EF973D72714EC633C13E /* objects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 456455EBE428DF3422791347 /* objects.cpp */; };
+		C130590842720A6C1EDA8336 /* glkstart.h in Headers */ = {isa = PBXBuildFile; fileRef = C7BBE477B377A373D65370FF /* glkstart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C300CE2E877FB13F08D1BB1B /* zoom.h in Headers */ = {isa = PBXBuildFile; fileRef = 01E947E2883033E13F7D2240 /* zoom.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6D16A64B8F8B4966792D805 /* spatterlight-autosave.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE87B9D9BE1CB9AF3712A579 /* spatterlight-autosave.mm */; };
+		C79BAB41E406451944428DAE /* glulxe.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFF536ABF7709C641DCAE541 /* glulxe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8C9120E706A85CE16725408 /* extract_apple_2.h in Headers */ = {isa = PBXBuildFile; fileRef = 8754C55C416BB9921EC77254 /* extract_apple_2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D8906F39F02279C2A147ED /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 11279F16A8E6865367CC4321 /* main.c */; };
+		C93B4947918BB6E33868DAF2 /* ciderpress.h in Headers */ = {isa = PBXBuildFile; fileRef = E09F90E9ADCAD37C211FB7BC /* ciderpress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA8A7F1CC75A44F0A56C5F2E /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = F02C68DC970D139B28DC4332 /* window.c */; };
+		CB218235532B31916F3758F2 /* gi_blorb.c in Sources */ = {isa = PBXBuildFile; fileRef = D0C836A15082E39ED1EACCCB /* gi_blorb.c */; };
+		CBAE831F49FD3A2172FEA714 /* ciderpress.c in Sources */ = {isa = PBXBuildFile; fileRef = 9314D27679F155F289138016 /* ciderpress.c */; };
+		CC73515EE56320FF9D0834CF /* entrypoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A29F2767BF23CE224FF86DA /* entrypoints.cpp */; };
+		CCB2D787C91754283843FB19 /* funcs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8579DA7833B53CE54636B1AF /* funcs.c */; };
+		CD195668A708B2CD7931C37C /* glkautosave.h in Headers */ = {isa = PBXBuildFile; fileRef = ED106E958D902EC5495D94C6 /* glkautosave.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE33DC8ABBCFEEC91F388917 /* GlkStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EBDDA9A6C8D7DBBBFE7D10 /* GlkStyles.swift */; };
+		CF3E6FC89771F07F9989E3F5 /* stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 246341B1444EA0BBE6454054 /* stack.cpp */; };
+		D0AE7DD97BF134E74FB95532 /* draw_png.h in Headers */ = {isa = PBXBuildFile; fileRef = 481765AD1FFC3603B6A3DC25 /* draw_png.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D32B385FF04E6B74F3F0AE42 /* profile.c in Sources */ = {isa = PBXBuildFile; fileRef = A44272E5E7045C80EC7648BE /* profile.c */; };
+		D38F6A2725D8FBFAA158DB47 /* autosavefiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 65D3474BCF7156408F937F13 /* autosavefiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D40AA3F6BE125CD48A9C9925 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26526D87959BC6F1A89454C2 /* io.cpp */; };
+		D452F4F56EE50767A73FAE8B /* writetiff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0315DC35D10EC66C57AEE1FD /* writetiff.cpp */; };
+		D52CB256DFDFA3CDBD31CE8E /* TempWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FF13B1B77B8B9CB883E5FE4B /* TempWindow.m */; };
+		D5BBB482B3AFEBBCFC4A1939 /* cgunicod.c in Sources */ = {isa = PBXBuildFile; fileRef = 2700FA2AD832A28AD5959A04 /* cgunicod.c */; };
+		D733B84E55E4EC7D0FEF4471 /* sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6713528F9FB8B5A62D3DC744 /* sound.cpp */; };
+		D79BA6C3FF828F2F32164821 /* gestalt.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FE268C3F6E496A0605A2185 /* gestalt.c */; };
+		D7ECC2D7CA1BC9BFC03679EC /* gestalt.c in Sources */ = {isa = PBXBuildFile; fileRef = AEE3CA86A370EE76A8F8181B /* gestalt.c */; };
+		D7FA90FC2FAF0034D968E498 /* fileref.m in Sources */ = {isa = PBXBuildFile; fileRef = FE243BFE2B9612A7A8317C79 /* fileref.m */; };
+		D981259E5BC83BA490E4A8D2 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC6DB0664A89CC5E4264AC /* util.cpp */; };
+		DAB069DF0DA49FB0192C0386 /* SidePane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDC4C6B34350A5D43C2E916 /* SidePane.swift */; };
+		DB3D5FE00508728AE1FFF0BD /* unixstrt.h in Headers */ = {isa = PBXBuildFile; fileRef = F75E0846BE706EAEA0AC61CE /* unixstrt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB5D2D451C56120CECC053F6 /* TempStream.h in Headers */ = {isa = PBXBuildFile; fileRef = D54462AD94B3EB2CA0A8060F /* TempStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DCBFE4FE834DC63F18B36D25 /* autosavefiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCA09850F89EC04134CC42 /* autosavefiles.m */; };
+		DCF25B49ACD296FA5BFF41C3 /* TempLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E5A0A775D7289FEE96F2BE /* TempLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD44A7049C212167C6A717CD /* accel.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B112670D4AD175AA2C7ECEE /* accel.c */; };
+		DF86BD5EBD269985B70E01F7 /* messagenames.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CD91057C72A28E7A2EA77C4 /* messagenames.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0BB0F89BE173C41A235D122 /* messagenames.c in Sources */ = {isa = PBXBuildFile; fileRef = 36138D84187C09266A1A8691 /* messagenames.c */; };
+		E148C4D49FCC6C382D5B7700 /* arthur.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7330A7A0C8C50E330AF8720B /* arthur.cpp */; };
+		E250B6B01DF945C3B2D48997 /* cgunicod.c in Sources */ = {isa = PBXBuildFile; fileRef = 2700FA2AD832A28AD5959A04 /* cgunicod.c */; };
+		E3379F31CBBD0CF1672FCB6A /* zoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF17DDE77FDEF97E779E4EB /* zoom.cpp */; };
+		E35F6A7F79153DE7F43939BC /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FBD529A0C0F833889DCAD /* serial.c */; };
+		E4219FBF97880D6C3CD905B6 /* TempStream.h in Headers */ = {isa = PBXBuildFile; fileRef = D54462AD94B3EB2CA0A8060F /* TempStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7181E511EC077325EC7494E /* cgdate.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B706C38220F8FF7FEB0B67 /* cgdate.c */; };
+		E71C3FC334E66E0A98DDA104 /* gestalt.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FE268C3F6E496A0605A2185 /* gestalt.c */; };
+		E7CEE531270A700C6CAFF98B /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC5A1BB87802D6DCC77CB1C7 /* unicode.cpp */; };
+		E7D0A6294A802C97F4185DDC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED4A14D7F8C4D219B2935D0 /* RootViewController.swift */; };
+		E8FFBDC95205636202684DD0 /* TempWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A76F1D33B12C5788ED9747A /* TempWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E99809B72E880A2A5192029D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EEB29F5C216AF77822560517 /* main.c */; settings = {COMPILER_FLAGS = "-Dmain=spatterlight_terp_main"; }; };
+		EA18A6E3214D9BA4E9E92CF6 /* blorb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368C0CA53AE9D393D22D59EF /* blorb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA4D6A2C5CBD08845D7B2F4F /* dict.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EB1BDE5CB3BB2E8C996AB37 /* dict.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAC45A1374330ACADDC2F737 /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = E04C1088A630C2C1D732C809 /* misc.c */; };
+		ED0CAEE71B5D3E13CC301300 /* meta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCD39C8EC8275B8F59E56047 /* meta.cpp */; };
+		F2413507958B8D36DFB62A1A /* spatterlight-autosave.h in Headers */ = {isa = PBXBuildFile; fileRef = 1561133B38444602B141A09F /* spatterlight-autosave.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F382B5FB1B3CE3C909468FB1 /* screen.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B27735A96101EDEC004691 /* screen.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F49FC091BD5AE0AA405354DA /* TempWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FF13B1B77B8B9CB883E5FE4B /* TempWindow.m */; };
+		F51C4D73241E73EA244C1B35 /* glk.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610E59C0A14D685034441A9 /* glk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6679CA8C77D9205990E2A3A /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = F02C68DC970D139B28DC4332 /* window.c */; };
+		F941ECB282F9045BE4A1FDE3 /* TempFileRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 8869D82C48F369E981A2CFF4 /* TempFileRef.m */; };
+		FA9EC07934BF54390BE9BAEB /* TempLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = F39D6036ED38167453CF94D2 /* TempLibrary.m */; };
+		FBAABE5AE0FB4B84E2400536 /* files.c in Sources */ = {isa = PBXBuildFile; fileRef = DA67C24176E288D53E2C9899 /* files.c */; };
+		FC63FF059EDB0D6179A12222 /* sp_terp_entry.c in Sources */ = {isa = PBXBuildFile; fileRef = C43E96A4F21B7FF28A93671A /* sp_terp_entry.c */; };
+		FC6B929A712DCFD30C9B7798 /* autosavefiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 65D3474BCF7156408F937F13 /* autosavefiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD0B4DFE54BAAAC77E75E0DD /* glkstart.h in Headers */ = {isa = PBXBuildFile; fileRef = C7BBE477B377A373D65370FF /* glkstart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD9751C2431F23EF2B5BD47A /* zterp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32A88B03C0AAC8D63AB9E584 /* zterp.cpp */; };
+		FE6CB66847ACFC081B63531D /* woz2nib.h in Headers */ = {isa = PBXBuildFile; fileRef = F99ECB8C2EDD43DD28A97E18 /* woz2nib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFA400A0EECF949F02F7BBA3 /* sp_terp_entry.h in Headers */ = {isa = PBXBuildFile; fileRef = DFD9A94DBCEE708A43C0B798 /* sp_terp_entry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFC41D7AE0AB64A67B50D8BE /* FileSignature.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FFB62EC9E88672DD71A5ED4 /* FileSignature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		008C953965FE7576D467B5D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 338A8E1B4B793C451806AEBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E9CF396AAB8AC1AC049F09E;
+			remoteInfo = glulxe;
+		};
+		BAF8A9E74657E901F2F67EB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 338A8E1B4B793C451806AEBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14A154AAAAD242BEF7165AA9;
+			remoteInfo = bocfel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1E803F94A65018DE071A1B6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C79BAB41E406451944428DAE /* glulxe.framework in Embed Frameworks */,
+				B753D910D3BD0B70379DA033 /* bocfel.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		012D1BC8F0D3B5E4AC7BB907 /* random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
+		01E947E2883033E13F7D2240 /* zoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zoom.h; sourceTree = "<group>"; };
+		0315DC35D10EC66C57AEE1FD /* writetiff.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = writetiff.cpp; sourceTree = "<group>"; };
+		04F47CF7C434389A6EFB46C4 /* meta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = meta.h; sourceTree = "<group>"; };
+		05CF891CB5660B640FCB3245 /* image.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = image.c; sourceTree = "<group>"; };
+		05DF2AF15F8F97F499945FD6 /* FileSignature.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileSignature.m; sourceTree = "<group>"; };
+		0610E59C0A14D685034441A9 /* glk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glk.h; sourceTree = "<group>"; };
+		0782D096A03CB50F2AD9ED41 /* entrypoints_shogun.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entrypoints_shogun.cpp; sourceTree = "<group>"; };
+		094B8283FFFC8F850F4EE6C3 /* v1234.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v1234.h; sourceTree = "<group>"; };
+		0953D50E5648D6B4BF0698EC /* protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
+		0D4B728AF83FD7A3C56B3DF8 /* sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sound.h; sourceTree = "<group>"; };
+		0E2026700F8330F323C734AB /* sound.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sound.c; sourceTree = "<group>"; };
+		0FF5B3FA7FBF5FB3200D09BC /* TempFileRef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempFileRef.h; sourceTree = "<group>"; };
+		11279F16A8E6865367CC4321 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		1561133B38444602B141A09F /* spatterlight-autosave.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "spatterlight-autosave.h"; sourceTree = "<group>"; };
+		1566F656EDF98975F649239C /* glkimp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glkimp.h; sourceTree = "<group>"; };
+		15CD19CCC740AF03988A439D /* heap.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = heap.c; sourceTree = "<group>"; };
+		19B72EDFE3E16EF92055F460 /* unicode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode.h; sourceTree = "<group>"; };
+		1B9830C26798C15CA7E39AA9 /* screen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = screen.cpp; sourceTree = "<group>"; };
+		1D3FBD529A0C0F833889DCAD /* serial.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = serial.c; sourceTree = "<group>"; };
+		1F13B93E2EA50DFD9681A7A2 /* gi_debug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gi_debug.c; sourceTree = "<group>"; };
+		21B706C38220F8FF7FEB0B67 /* cgdate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cgdate.c; sourceTree = "<group>"; };
+		22CC1DFE196AF9BB5DDDACD5 /* search.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = search.c; sourceTree = "<group>"; };
+		246341B1444EA0BBE6454054 /* stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stack.cpp; sourceTree = "<group>"; };
+		25A0163088528D8CF7D47299 /* draw_image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = draw_image.cpp; sourceTree = "<group>"; };
+		264B9B32C98861DE18F37F4C /* float.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = float.c; sourceTree = "<group>"; };
+		26526D87959BC6F1A89454C2 /* io.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = io.cpp; sourceTree = "<group>"; };
+		2700FA2AD832A28AD5959A04 /* cgunicod.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cgunicod.c; sourceTree = "<group>"; };
+		276E028ABD614626B571CA8C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		28DC69C7B7AA83B926984977 /* gi_blorb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gi_blorb.h; sourceTree = "<group>"; };
+		2A7A327F75BDE71C53877056 /* options.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = options.cpp; sourceTree = "<group>"; };
+		2B112670D4AD175AA2C7ECEE /* accel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = accel.c; sourceTree = "<group>"; };
+		2DDC4C6B34350A5D43C2E916 /* SidePane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePane.swift; sourceTree = "<group>"; };
+		32A88B03C0AAC8D63AB9E584 /* zterp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = zterp.cpp; sourceTree = "<group>"; };
+		36138D84187C09266A1A8691 /* messagenames.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = messagenames.c; sourceTree = "<group>"; };
+		368C0CA53AE9D393D22D59EF /* blorb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blorb.h; sourceTree = "<group>"; };
+		3CD91057C72A28E7A2EA77C4 /* messagenames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messagenames.h; sourceTree = "<group>"; };
+		3E21DE6E862A7D03F182FA43 /* v6_definitions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = v6_definitions.cpp; sourceTree = "<group>"; };
+		3F507D40C7B0F8F6FD7A9F04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3FF17DDE77FDEF97E779E4EB /* zoom.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = zoom.cpp; sourceTree = "<group>"; };
+		40B01238FF9433D9115F3A14 /* NSString+Categories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Categories.h"; sourceTree = "<group>"; };
+		41843045F33CE316FE3B4A40 /* operand.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = operand.c; sourceTree = "<group>"; };
+		43652886F8338D2C2D91216F /* headless_compat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = headless_compat.h; sourceTree = "<group>"; };
+		44B27735A96101EDEC004691 /* screen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = screen.h; sourceTree = "<group>"; };
+		456455EBE428DF3422791347 /* objects.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = objects.cpp; sourceTree = "<group>"; };
+		4657B16092B8DA1976DEACA4 /* dict.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dict.cpp; sourceTree = "<group>"; };
+		46B840483CE7D23C87DDC0DE /* connect.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = connect.c; sourceTree = "<group>"; };
+		481765AD1FFC3603B6A3DC25 /* draw_png.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = draw_png.h; sourceTree = "<group>"; };
+		4C1EB8AA7C194378DB2A24B8 /* Spatterlight.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Spatterlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C89ED9B8902BB25DBD39C46 /* TempSChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempSChannel.m; sourceTree = "<group>"; };
+		502ACE08C97C522C9845989E /* v6_specific.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v6_specific.h; sourceTree = "<group>"; };
+		5268B9C0FD2A0A01B5FC6E9C /* glulxe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glulxe.h; sourceTree = "<group>"; };
+		5325995D583F7DABCD6A2BAF /* journey.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = journey.cpp; sourceTree = "<group>"; };
+		5747EC9A9C1C1EDDB7F8CDC8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		5D4563C57E8B38F56B71676C /* blorb.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = blorb.cpp; sourceTree = "<group>"; };
+		5DCD20B4A1F9140D516C0F88 /* SpatterlightiOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpatterlightiOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		5ED4A14D7F8C4D219B2935D0 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		5F038541562BE09E96C6D2A9 /* process.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = process.cpp; sourceTree = "<group>"; };
+		5FC4E1B20AD4057ACFE83160 /* osdepend.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = osdepend.c; sourceTree = "<group>"; };
+		62F3896858E2AC889D062431 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		65BC6DB0664A89CC5E4264AC /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		65D3474BCF7156408F937F13 /* autosavefiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = autosavefiles.h; sourceTree = "<group>"; };
+		65E3D3158D1337D68FA73356 /* objects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objects.h; sourceTree = "<group>"; };
+		6713528F9FB8B5A62D3DC744 /* sound.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cpp; sourceTree = "<group>"; };
+		67EC7DA1B56FB867D41062F0 /* entrypoints_arthur.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entrypoints_arthur.cpp; sourceTree = "<group>"; };
+		684B293E427528ED0068E461 /* memory_allocation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = memory_allocation.cpp; sourceTree = "<group>"; };
+		69F9EF7FB4DA2A20898FF8A6 /* random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = random.cpp; sourceTree = "<group>"; };
+		6A8EC7BF70920A4D2A4F4755 /* TerpRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerpRuntime.swift; sourceTree = "<group>"; };
+		6CED7D89C5D3B4B32FDE886E /* osdep.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = osdep.cpp; sourceTree = "<group>"; };
+		6CFCA09850F89EC04134CC42 /* autosavefiles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = autosavefiles.m; sourceTree = "<group>"; };
+		6D5A7EBA5D985275A1DC79DF /* gi_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gi_debug.h; sourceTree = "<group>"; };
+		6F3F59442332B15FBAF8F370 /* DebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
+		711941E44B748B9ACBA45C24 /* glkop.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glkop.c; sourceTree = "<group>"; };
+		7241DA148AFF629FFE6DD4BD /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		73266FC43CDBCAE407072E0E /* gi_dispa.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gi_dispa.c; sourceTree = "<group>"; };
+		7330A7A0C8C50E330AF8720B /* arthur.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = arthur.cpp; sourceTree = "<group>"; };
+		746D94721D9F21A69A004658 /* fileref.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fileref.h; sourceTree = "<group>"; };
+		7498E102E4AD3E3807579C49 /* options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = options.h; sourceTree = "<group>"; };
+		790081E6EA8AFBDE5FF9B136 /* woz2nib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = woz2nib.c; sourceTree = "<group>"; };
+		79170AF76CC959AE009823D6 /* TempStream.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempStream.m; sourceTree = "<group>"; };
+		79B4196370676C6005ED9105 /* blorb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = blorb.c; sourceTree = "<group>"; };
+		79DE5D2C42350AF00DD8437D /* gestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gestalt.h; sourceTree = "<group>"; };
+		7B7E18F733A7C5ACDA7BD2FB /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		7E0EA229D20AFDEE9BC2D094 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		8037943FE453AD6344287880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		80D12D6352CB6092B50EDF98 /* iff.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = iff.cpp; sourceTree = "<group>"; };
+		816EB7A18FE1EE3469E0CB3D /* event.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = event.c; sourceTree = "<group>"; };
+		821A5DA5EC8D449E35B8AF36 /* glkautosave.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = glkautosave.cpp; sourceTree = "<group>"; };
+		850F52B6557779A6257FB4F1 /* bocfel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = bocfel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8579DA7833B53CE54636B1AF /* funcs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = funcs.c; sourceTree = "<group>"; };
+		8754C55C416BB9921EC77254 /* extract_apple_2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = extract_apple_2.h; sourceTree = "<group>"; };
+		8758CB3C19F61FFDD721A7A0 /* GlkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlkSession.swift; sourceTree = "<group>"; };
+		8869D82C48F369E981A2CFF4 /* TempFileRef.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempFileRef.m; sourceTree = "<group>"; };
+		88E0E2F7677A3E297F32299C /* GlkDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlkDisplay.swift; sourceTree = "<group>"; };
+		8FFB62EC9E88672DD71A5ED4 /* FileSignature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileSignature.h; sourceTree = "<group>"; };
+		92EC0974D897102584201AC1 /* patches.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = patches.cpp; sourceTree = "<group>"; };
+		9314D27679F155F289138016 /* ciderpress.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ciderpress.c; sourceTree = "<group>"; };
+		95D49883377D63E9A36F467B /* exec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = exec.c; sourceTree = "<group>"; };
+		97814C0FCF1C327283D0EDCD /* stylehint.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stylehint.c; sourceTree = "<group>"; };
+		9A29F2767BF23CE224FF86DA /* entrypoints.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entrypoints.cpp; sourceTree = "<group>"; };
+		9A76F1D33B12C5788ED9747A /* TempWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempWindow.h; sourceTree = "<group>"; };
+		9A8D184770158AA71E153DFA /* branch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = branch.h; sourceTree = "<group>"; };
+		9EB1BDE5CB3BB2E8C996AB37 /* dict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dict.h; sourceTree = "<group>"; };
+		9FE268C3F6E496A0605A2185 /* gestalt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gestalt.c; sourceTree = "<group>"; };
+		A3534D24170C4E518A28DCF2 /* io.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
+		A3D176B5C08E91AE8321484C /* v6_hints.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = v6_hints.cpp; sourceTree = "<group>"; };
+		A44272E5E7045C80EC7648BE /* profile.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = profile.c; sourceTree = "<group>"; };
+		A48FA7B514304C49B7B5F96D /* spatterstart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spatterstart.h; sourceTree = "<group>"; };
+		A6F91D69E7DE2D2B07C0F6A4 /* TempSChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempSChannel.h; sourceTree = "<group>"; };
+		AC812F9404F071F8A44B4D79 /* osdep.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = osdep.h; sourceTree = "<group>"; };
+		AEE3CA86A370EE76A8F8181B /* gestalt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gestalt.c; sourceTree = "<group>"; };
+		B1BAF02B19EA93CF8721B717 /* shogun.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shogun.cpp; sourceTree = "<group>"; };
+		B1CD059475FA0CA308807167 /* branch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = branch.cpp; sourceTree = "<group>"; };
+		B9008854111A25394E435347 /* fileresource.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fileresource.c; sourceTree = "<group>"; };
+		BB9F75D02E68994046FA54FE /* memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = memory.h; sourceTree = "<group>"; };
+		BE65A31E171CE096EB40875E /* v6_shared.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = v6_shared.cpp; sourceTree = "<group>"; };
+		C3E5A0A775D7289FEE96F2BE /* TempLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempLibrary.h; sourceTree = "<group>"; };
+		C43E96A4F21B7FF28A93671A /* sp_terp_entry.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sp_terp_entry.c; sourceTree = "<group>"; };
+		C51D59D80FDED74827C8AEA4 /* draw_png.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = draw_png.cpp; sourceTree = "<group>"; };
+		C7A458285BF8848D3A214B65 /* NSString+SignatureOnly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SignatureOnly.m"; sourceTree = "<group>"; };
+		C7BBE477B377A373D65370FF /* glkstart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glkstart.h; sourceTree = "<group>"; };
+		C7DEFC7F858723FBC91330D1 /* stream.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stream.c; sourceTree = "<group>"; };
+		C93F84FFC96791E7AE6EC109 /* decompress_amiga.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = decompress_amiga.cpp; sourceTree = "<group>"; };
+		CC5A1BB87802D6DCC77CB1C7 /* unicode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
+		CF3EC9320664697009219B11 /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
+		CF4CB925DECBBA05FA500CED /* gi_dispa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gi_dispa.h; sourceTree = "<group>"; };
+		CFC82307F7261B878CE60A56 /* find_graphics_files.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = find_graphics_files.cpp; sourceTree = "<group>"; };
+		D0C836A15082E39ED1EACCCB /* gi_blorb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gi_blorb.c; sourceTree = "<group>"; };
+		D54462AD94B3EB2CA0A8060F /* TempStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempStream.h; sourceTree = "<group>"; };
+		D5C3F7EC808F071B80020DE8 /* opcodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = opcodes.h; sourceTree = "<group>"; };
+		D7D1D686D66DB747C9A6A239 /* draw_apple_2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = draw_apple_2.cpp; sourceTree = "<group>"; };
+		D98B8871E3B0754C5A0F6D5C /* iff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iff.h; sourceTree = "<group>"; };
+		D98F74844D96562C8ECDB230 /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		DA1AD9F3632FC3904696218C /* string.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
+		DA4B10A7CB1108B8AE9AD18E /* decompress_vga.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = decompress_vga.cpp; sourceTree = "<group>"; };
+		DA67C24176E288D53E2C9899 /* files.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = files.c; sourceTree = "<group>"; };
+		DAA441852D6D1A2548EC65B1 /* entrypoints_journey.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entrypoints_journey.cpp; sourceTree = "<group>"; };
+		DAF50F917B663EF0C03142C6 /* memory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = memory.cpp; sourceTree = "<group>"; };
+		DBA754424BFEF0D01CDE362D /* spatterstart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spatterstart.m; sourceTree = "<group>"; };
+		DD8F49CBA7F34C90D28BD169 /* mathop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mathop.cpp; sourceTree = "<group>"; };
+		DFD9A94DBCEE708A43C0B798 /* sp_terp_entry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sp_terp_entry.h; sourceTree = "<group>"; };
+		E04C1088A630C2C1D732C809 /* misc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
+		E09F90E9ADCAD37C211FB7BC /* ciderpress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ciderpress.h; sourceTree = "<group>"; };
+		E3523D0D7F5D8057CD76A0B9 /* entrypoints_zorkzero.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entrypoints_zorkzero.cpp; sourceTree = "<group>"; };
+		E35A248AB1A36E0B0AD362A1 /* mathop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mathop.h; sourceTree = "<group>"; };
+		E4072CFAA60074320D8880CA /* stash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stash.h; sourceTree = "<group>"; };
+		E68DB53EEC2670CE57A8B8E5 /* draw_border.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = draw_border.cpp; sourceTree = "<group>"; };
+		E6B83A683C19032F9722956B /* vm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vm.c; sourceTree = "<group>"; };
+		E6ECBFAA35A8DE4235B862DC /* v6_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v6_image.h; sourceTree = "<group>"; };
+		E7088CBF84559BA1D41F8956 /* stash.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stash.cpp; sourceTree = "<group>"; };
+		E89B35373A93C4FAED1AA54B /* extract_apple_2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = extract_apple_2.cpp; sourceTree = "<group>"; };
+		EA8263AF5E8B09CDC2C8B5A7 /* process.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = process.h; sourceTree = "<group>"; };
+		ED106E958D902EC5495D94C6 /* glkautosave.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glkautosave.h; sourceTree = "<group>"; };
+		EE5D73161716C3B61A5E1CE6 /* zorkzero_minigames.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = zorkzero_minigames.cpp; sourceTree = "<group>"; };
+		EE6D0DC05CB6C57EA495E0C7 /* patches.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = patches.h; sourceTree = "<group>"; };
+		EE87B9D9BE1CB9AF3712A579 /* spatterlight-autosave.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "spatterlight-autosave.mm"; sourceTree = "<group>"; };
+		EEB29F5C216AF77822560517 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F02C68DC970D139B28DC4332 /* window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = window.c; sourceTree = "<group>"; };
+		F1D65F0605F0AC892B7AE45C /* glkstart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = glkstart.cpp; sourceTree = "<group>"; };
+		F39D6036ED38167453CF94D2 /* TempLibrary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempLibrary.m; sourceTree = "<group>"; };
+		F3EBDDA9A6C8D7DBBBFE7D10 /* GlkStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlkStyles.swift; sourceTree = "<group>"; };
+		F4AF8C659960BE6664BE247A /* GlkWindowViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlkWindowViews.swift; sourceTree = "<group>"; };
+		F74FFB34D82E77BEBB540AF3 /* zterp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zterp.h; sourceTree = "<group>"; };
+		F75E0846BE706EAEA0AC61CE /* unixstrt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unixstrt.h; sourceTree = "<group>"; };
+		F9596CB5C772B846B120485C /* draw_apple_2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = draw_apple_2.h; sourceTree = "<group>"; };
+		F99ECB8C2EDD43DD28A97E18 /* woz2nib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = woz2nib.h; sourceTree = "<group>"; };
+		FC1A7F710F573187773A7DC2 /* zorkzero.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = zorkzero.cpp; sourceTree = "<group>"; };
+		FCD39C8EC8275B8F59E56047 /* meta.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = meta.cpp; sourceTree = "<group>"; };
+		FDD4EE45E96E9298E2C40F66 /* fileref.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fileref.c; sourceTree = "<group>"; };
+		FE243BFE2B9612A7A8317C79 /* fileref.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fileref.m; sourceTree = "<group>"; };
+		FE322693CDD1265C47BFF0E7 /* extract_image_data.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = extract_image_data.cpp; sourceTree = "<group>"; };
+		FF13B1B77B8B9CB883E5FE4B /* TempWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempWindow.m; sourceTree = "<group>"; };
+		FFB7C1FB2D660F78CB7F5A77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FFF536ABF7709C641DCAE541 /* glulxe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = glulxe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2000274D93C6714A0B4CF7E8 /* glkimp */ = {
+			isa = PBXGroup;
+			children = (
+				65D3474BCF7156408F937F13 /* autosavefiles.h */,
+				6CFCA09850F89EC04134CC42 /* autosavefiles.m */,
+				79B4196370676C6005ED9105 /* blorb.c */,
+				21B706C38220F8FF7FEB0B67 /* cgdate.c */,
+				2700FA2AD832A28AD5959A04 /* cgunicod.c */,
+				46B840483CE7D23C87DDC0DE /* connect.c */,
+				816EB7A18FE1EE3469E0CB3D /* event.c */,
+				FDD4EE45E96E9298E2C40F66 /* fileref.c */,
+				746D94721D9F21A69A004658 /* fileref.h */,
+				FE243BFE2B9612A7A8317C79 /* fileref.m */,
+				B9008854111A25394E435347 /* fileresource.c */,
+				9FE268C3F6E496A0605A2185 /* gestalt.c */,
+				D0C836A15082E39ED1EACCCB /* gi_blorb.c */,
+				28DC69C7B7AA83B926984977 /* gi_blorb.h */,
+				1F13B93E2EA50DFD9681A7A2 /* gi_debug.c */,
+				6D5A7EBA5D985275A1DC79DF /* gi_debug.h */,
+				73266FC43CDBCAE407072E0E /* gi_dispa.c */,
+				CF4CB925DECBBA05FA500CED /* gi_dispa.h */,
+				0610E59C0A14D685034441A9 /* glk.h */,
+				1566F656EDF98975F649239C /* glkimp.h */,
+				C7BBE477B377A373D65370FF /* glkstart.h */,
+				05CF891CB5660B640FCB3245 /* image.c */,
+				EEB29F5C216AF77822560517 /* main.c */,
+				36138D84187C09266A1A8691 /* messagenames.c */,
+				3CD91057C72A28E7A2EA77C4 /* messagenames.h */,
+				E04C1088A630C2C1D732C809 /* misc.c */,
+				0953D50E5648D6B4BF0698EC /* protocol.h */,
+				0E2026700F8330F323C734AB /* sound.c */,
+				C7DEFC7F858723FBC91330D1 /* stream.c */,
+				97814C0FCF1C327283D0EDCD /* stylehint.c */,
+				F02C68DC970D139B28DC4332 /* window.c */,
+				687331795348C8ADFFF0DBA9 /* autorestore */,
+			);
+			path = glkimp;
+			sourceTree = "<group>";
+		};
+		3419BC42A4DA49FCAC436E65 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				6A8EC7BF70920A4D2A4F4755 /* TerpRuntime.swift */,
+			);
+			path = Runtime;
+			sourceTree = "<group>";
+		};
+		480EC0B97591A5F6D4787B83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E0EA229D20AFDEE9BC2D094 /* Library.swift */,
+				5747EC9A9C1C1EDDB7F8CDC8 /* Settings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66A332EEDD2DEEBBDAD88192 /* application */ = {
+			isa = PBXGroup;
+			children = (
+				6F3F59442332B15FBAF8F370 /* DebugLog.h */,
+				8FFB62EC9E88672DD71A5ED4 /* FileSignature.h */,
+				05DF2AF15F8F97F499945FD6 /* FileSignature.m */,
+				40B01238FF9433D9115F3A14 /* NSString+Categories.h */,
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		687331795348C8ADFFF0DBA9 /* autorestore */ = {
+			isa = PBXGroup;
+			children = (
+				0FF5B3FA7FBF5FB3200D09BC /* TempFileRef.h */,
+				8869D82C48F369E981A2CFF4 /* TempFileRef.m */,
+				C3E5A0A775D7289FEE96F2BE /* TempLibrary.h */,
+				F39D6036ED38167453CF94D2 /* TempLibrary.m */,
+				A6F91D69E7DE2D2B07C0F6A4 /* TempSChannel.h */,
+				4C89ED9B8902BB25DBD39C46 /* TempSChannel.m */,
+				D54462AD94B3EB2CA0A8060F /* TempStream.h */,
+				79170AF76CC959AE009823D6 /* TempStream.m */,
+				9A76F1D33B12C5788ED9747A /* TempWindow.h */,
+				FF13B1B77B8B9CB883E5FE4B /* TempWindow.m */,
+			);
+			path = autorestore;
+			sourceTree = "<group>";
+		};
+		697AF096CEC08B73461FC8F0 /* readwoz */ = {
+			isa = PBXGroup;
+			children = (
+				9314D27679F155F289138016 /* ciderpress.c */,
+				E09F90E9ADCAD37C211FB7BC /* ciderpress.h */,
+				790081E6EA8AFBDE5FF9B136 /* woz2nib.c */,
+				F99ECB8C2EDD43DD28A97E18 /* woz2nib.h */,
+			);
+			path = readwoz;
+			sourceTree = "<group>";
+		};
+		7864E8D0D7DF26D1C35B5B26 /* bocfel-spatterlight */ = {
+			isa = PBXGroup;
+			children = (
+				1561133B38444602B141A09F /* spatterlight-autosave.h */,
+				EE87B9D9BE1CB9AF3712A579 /* spatterlight-autosave.mm */,
+			);
+			path = "bocfel-spatterlight";
+			sourceTree = "<group>";
+		};
+		83B02BEB478A2C8CAD7CDED7 /* z6 */ = {
+			isa = PBXGroup;
+			children = (
+				7330A7A0C8C50E330AF8720B /* arthur.cpp */,
+				C93F84FFC96791E7AE6EC109 /* decompress_amiga.cpp */,
+				DA4B10A7CB1108B8AE9AD18E /* decompress_vga.cpp */,
+				D7D1D686D66DB747C9A6A239 /* draw_apple_2.cpp */,
+				F9596CB5C772B846B120485C /* draw_apple_2.h */,
+				E68DB53EEC2670CE57A8B8E5 /* draw_border.cpp */,
+				25A0163088528D8CF7D47299 /* draw_image.cpp */,
+				C51D59D80FDED74827C8AEA4 /* draw_png.cpp */,
+				481765AD1FFC3603B6A3DC25 /* draw_png.h */,
+				67EC7DA1B56FB867D41062F0 /* entrypoints_arthur.cpp */,
+				DAA441852D6D1A2548EC65B1 /* entrypoints_journey.cpp */,
+				0782D096A03CB50F2AD9ED41 /* entrypoints_shogun.cpp */,
+				E3523D0D7F5D8057CD76A0B9 /* entrypoints_zorkzero.cpp */,
+				9A29F2767BF23CE224FF86DA /* entrypoints.cpp */,
+				E89B35373A93C4FAED1AA54B /* extract_apple_2.cpp */,
+				8754C55C416BB9921EC77254 /* extract_apple_2.h */,
+				FE322693CDD1265C47BFF0E7 /* extract_image_data.cpp */,
+				CFC82307F7261B878CE60A56 /* find_graphics_files.cpp */,
+				5325995D583F7DABCD6A2BAF /* journey.cpp */,
+				684B293E427528ED0068E461 /* memory_allocation.cpp */,
+				B1BAF02B19EA93CF8721B717 /* shogun.cpp */,
+				3E21DE6E862A7D03F182FA43 /* v6_definitions.cpp */,
+				A3D176B5C08E91AE8321484C /* v6_hints.cpp */,
+				E6ECBFAA35A8DE4235B862DC /* v6_image.h */,
+				BE65A31E171CE096EB40875E /* v6_shared.cpp */,
+				502ACE08C97C522C9845989E /* v6_specific.h */,
+				0315DC35D10EC66C57AEE1FD /* writetiff.cpp */,
+				EE5D73161716C3B61A5E1CE6 /* zorkzero_minigames.cpp */,
+				FC1A7F710F573187773A7DC2 /* zorkzero.cpp */,
+			);
+			path = z6;
+			sourceTree = "<group>";
+		};
+		944EDA17569D5787144D6937 = {
+			isa = PBXGroup;
+			children = (
+				E7FFA4D8E4E670AC74B991F7 /* App */,
+				FD8C2F7DB043DEE1BF8D2F52 /* spatterlight-ios */,
+				B60FEEE2DEBEF2D0A332A240 /* TerpGlue */,
+				A3310CAAE5621776C44DEEE2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A3310CAAE5621776C44DEEE2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				850F52B6557779A6257FB4F1 /* bocfel.framework */,
+				FFF536ABF7709C641DCAE541 /* glulxe.framework */,
+				4C1EB8AA7C194378DB2A24B8 /* Spatterlight.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA5E9DD9CE0655788A55518E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				276E028ABD614626B571CA8C /* GameViewController.swift */,
+				CF3EC9320664697009219B11 /* InputBar.swift */,
+				7B7E18F733A7C5ACDA7BD2FB /* LibraryViewController.swift */,
+				5ED4A14D7F8C4D219B2935D0 /* RootViewController.swift */,
+				FFB7C1FB2D660F78CB7F5A77 /* SettingsView.swift */,
+				2DDC4C6B34350A5D43C2E916 /* SidePane.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AB2EBE54EE650A69FF9D1DF4 /* bocfel */ = {
+			isa = PBXGroup;
+			children = (
+				5D4563C57E8B38F56B71676C /* blorb.cpp */,
+				368C0CA53AE9D393D22D59EF /* blorb.h */,
+				B1CD059475FA0CA308807167 /* branch.cpp */,
+				9A8D184770158AA71E153DFA /* branch.h */,
+				4657B16092B8DA1976DEACA4 /* dict.cpp */,
+				9EB1BDE5CB3BB2E8C996AB37 /* dict.h */,
+				821A5DA5EC8D449E35B8AF36 /* glkautosave.cpp */,
+				ED106E958D902EC5495D94C6 /* glkautosave.h */,
+				F1D65F0605F0AC892B7AE45C /* glkstart.cpp */,
+				43652886F8338D2C2D91216F /* headless_compat.h */,
+				80D12D6352CB6092B50EDF98 /* iff.cpp */,
+				D98B8871E3B0754C5A0F6D5C /* iff.h */,
+				26526D87959BC6F1A89454C2 /* io.cpp */,
+				A3534D24170C4E518A28DCF2 /* io.h */,
+				DD8F49CBA7F34C90D28BD169 /* mathop.cpp */,
+				E35A248AB1A36E0B0AD362A1 /* mathop.h */,
+				DAF50F917B663EF0C03142C6 /* memory.cpp */,
+				BB9F75D02E68994046FA54FE /* memory.h */,
+				FCD39C8EC8275B8F59E56047 /* meta.cpp */,
+				04F47CF7C434389A6EFB46C4 /* meta.h */,
+				456455EBE428DF3422791347 /* objects.cpp */,
+				65E3D3158D1337D68FA73356 /* objects.h */,
+				2A7A327F75BDE71C53877056 /* options.cpp */,
+				7498E102E4AD3E3807579C49 /* options.h */,
+				6CED7D89C5D3B4B32FDE886E /* osdep.cpp */,
+				AC812F9404F071F8A44B4D79 /* osdep.h */,
+				92EC0974D897102584201AC1 /* patches.cpp */,
+				EE6D0DC05CB6C57EA495E0C7 /* patches.h */,
+				5F038541562BE09E96C6D2A9 /* process.cpp */,
+				EA8263AF5E8B09CDC2C8B5A7 /* process.h */,
+				69F9EF7FB4DA2A20898FF8A6 /* random.cpp */,
+				012D1BC8F0D3B5E4AC7BB907 /* random.h */,
+				1B9830C26798C15CA7E39AA9 /* screen.cpp */,
+				44B27735A96101EDEC004691 /* screen.h */,
+				6713528F9FB8B5A62D3DC744 /* sound.cpp */,
+				0D4B728AF83FD7A3C56B3DF8 /* sound.h */,
+				246341B1444EA0BBE6454054 /* stack.cpp */,
+				D98F74844D96562C8ECDB230 /* stack.h */,
+				E7088CBF84559BA1D41F8956 /* stash.cpp */,
+				E4072CFAA60074320D8880CA /* stash.h */,
+				7241DA148AFF629FFE6DD4BD /* types.h */,
+				CC5A1BB87802D6DCC77CB1C7 /* unicode.cpp */,
+				19B72EDFE3E16EF92055F460 /* unicode.h */,
+				65BC6DB0664A89CC5E4264AC /* util.cpp */,
+				62F3896858E2AC889D062431 /* util.h */,
+				094B8283FFFC8F850F4EE6C3 /* v1234.h */,
+				3FF17DDE77FDEF97E779E4EB /* zoom.cpp */,
+				01E947E2883033E13F7D2240 /* zoom.h */,
+				32A88B03C0AAC8D63AB9E584 /* zterp.cpp */,
+				F74FFB34D82E77BEBB540AF3 /* zterp.h */,
+				7864E8D0D7DF26D1C35B5B26 /* bocfel-spatterlight */,
+				83B02BEB478A2C8CAD7CDED7 /* z6 */,
+			);
+			path = bocfel;
+			sourceTree = "<group>";
+		};
+		B60FEEE2DEBEF2D0A332A240 /* TerpGlue */ = {
+			isa = PBXGroup;
+			children = (
+				C7A458285BF8848D3A214B65 /* NSString+SignatureOnly.m */,
+				C43E96A4F21B7FF28A93671A /* sp_terp_entry.c */,
+				DFD9A94DBCEE708A43C0B798 /* sp_terp_entry.h */,
+			);
+			path = TerpGlue;
+			sourceTree = "<group>";
+		};
+		D1FBEA3D07376AAC000784F4 /* terps */ = {
+			isa = PBXGroup;
+			children = (
+				AB2EBE54EE650A69FF9D1DF4 /* bocfel */,
+				E410E575D39B01E3B5D95EAC /* glulxe */,
+				697AF096CEC08B73461FC8F0 /* readwoz */,
+			);
+			path = terps;
+			sourceTree = "<group>";
+		};
+		E410E575D39B01E3B5D95EAC /* glulxe */ = {
+			isa = PBXGroup;
+			children = (
+				2B112670D4AD175AA2C7ECEE /* accel.c */,
+				95D49883377D63E9A36F467B /* exec.c */,
+				DA67C24176E288D53E2C9899 /* files.c */,
+				264B9B32C98861DE18F37F4C /* float.c */,
+				8579DA7833B53CE54636B1AF /* funcs.c */,
+				AEE3CA86A370EE76A8F8181B /* gestalt.c */,
+				79DE5D2C42350AF00DD8437D /* gestalt.h */,
+				711941E44B748B9ACBA45C24 /* glkop.c */,
+				5268B9C0FD2A0A01B5FC6E9C /* glulxe.h */,
+				15CD19CCC740AF03988A439D /* heap.c */,
+				11279F16A8E6865367CC4321 /* main.c */,
+				D5C3F7EC808F071B80020DE8 /* opcodes.h */,
+				41843045F33CE316FE3B4A40 /* operand.c */,
+				5FC4E1B20AD4057ACFE83160 /* osdepend.c */,
+				A44272E5E7045C80EC7648BE /* profile.c */,
+				22CC1DFE196AF9BB5DDDACD5 /* search.c */,
+				1D3FBD529A0C0F833889DCAD /* serial.c */,
+				A48FA7B514304C49B7B5F96D /* spatterstart.h */,
+				DBA754424BFEF0D01CDE362D /* spatterstart.m */,
+				DA1AD9F3632FC3904696218C /* string.c */,
+				F75E0846BE706EAEA0AC61CE /* unixstrt.h */,
+				E6B83A683C19032F9722956B /* vm.c */,
+			);
+			path = glulxe;
+			sourceTree = "<group>";
+		};
+		E7FFA4D8E4E670AC74B991F7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3F507D40C7B0F8F6FD7A9F04 /* AppDelegate.swift */,
+				8037943FE453AD6344287880 /* Info.plist */,
+				5DCD20B4A1F9140D516C0F88 /* SpatterlightiOS-Bridging-Header.h */,
+				F088306CAF889BDB8331EAAD /* Glk */,
+				480EC0B97591A5F6D4787B83 /* Model */,
+				3419BC42A4DA49FCAC436E65 /* Runtime */,
+				AA5E9DD9CE0655788A55518E /* UI */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F088306CAF889BDB8331EAAD /* Glk */ = {
+			isa = PBXGroup;
+			children = (
+				88E0E2F7677A3E297F32299C /* GlkDisplay.swift */,
+				8758CB3C19F61FFDD721A7A0 /* GlkSession.swift */,
+				F3EBDDA9A6C8D7DBBBFE7D10 /* GlkStyles.swift */,
+				F4AF8C659960BE6664BE247A /* GlkWindowViews.swift */,
+			);
+			path = Glk;
+			sourceTree = "<group>";
+		};
+		FD8C2F7DB043DEE1BF8D2F52 /* spatterlight-ios */ = {
+			isa = PBXGroup;
+			children = (
+				66A332EEDD2DEEBBDAD88192 /* application */,
+				2000274D93C6714A0B4CF7E8 /* glkimp */,
+				D1FBEA3D07376AAC000784F4 /* terps */,
+			);
+			name = "spatterlight-ios";
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		937D0C3F5E757E02662B2BF5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD52EDEACD639BCE858AD7E2 /* DebugLog.h in Headers */,
+				6272C2E598AEB14F853C10F6 /* FileSignature.h in Headers */,
+				8000C8F61C38052F8DC6B106 /* NSString+Categories.h in Headers */,
+				A24008B0813A73DCD70C3404 /* TempFileRef.h in Headers */,
+				46FD8E2FE0D2AEC5A866A3CC /* TempLibrary.h in Headers */,
+				5DD8C12D34B7F1C8030598D5 /* TempSChannel.h in Headers */,
+				E4219FBF97880D6C3CD905B6 /* TempStream.h in Headers */,
+				E8FFBDC95205636202684DD0 /* TempWindow.h in Headers */,
+				FC6B929A712DCFD30C9B7798 /* autosavefiles.h in Headers */,
+				EA18A6E3214D9BA4E9E92CF6 /* blorb.h in Headers */,
+				29F71B233D5EC91FB2E09554 /* branch.h in Headers */,
+				C93B4947918BB6E33868DAF2 /* ciderpress.h in Headers */,
+				EA4D6A2C5CBD08845D7B2F4F /* dict.h in Headers */,
+				3AA8B3B73058E48175937AB1 /* draw_apple_2.h in Headers */,
+				D0AE7DD97BF134E74FB95532 /* draw_png.h in Headers */,
+				C8C9120E706A85CE16725408 /* extract_apple_2.h in Headers */,
+				B3D7D9C644DC01476D0D595E /* fileref.h in Headers */,
+				6B0787158CF7BB2F4BD3FD5C /* gi_blorb.h in Headers */,
+				47B7E9ABDE94E64B23001AB0 /* gi_debug.h in Headers */,
+				826E9AA360F9B95D077EEF3B /* gi_dispa.h in Headers */,
+				F51C4D73241E73EA244C1B35 /* glk.h in Headers */,
+				CD195668A708B2CD7931C37C /* glkautosave.h in Headers */,
+				13EA1A9CA24F1C01D7317B99 /* glkimp.h in Headers */,
+				C130590842720A6C1EDA8336 /* glkstart.h in Headers */,
+				69724CF79DF7701187795A07 /* headless_compat.h in Headers */,
+				9A7C6325D66383E1AFF6E2A4 /* iff.h in Headers */,
+				3E4F18677CE46C30EBCB21E2 /* io.h in Headers */,
+				AECFF62E33F6BD8542946483 /* mathop.h in Headers */,
+				256629A13CE23605C8E7E256 /* memory.h in Headers */,
+				6A96765327083D0646455BC6 /* messagenames.h in Headers */,
+				6DB6406A7D38DF71CD61A2F1 /* meta.h in Headers */,
+				19A1834DFADDFC07BCADB737 /* objects.h in Headers */,
+				0762BD83D8A850B8532D8766 /* options.h in Headers */,
+				0B155DB7730A6E0CA597FEE1 /* osdep.h in Headers */,
+				B0E85A074A84DEB352B2DD3F /* patches.h in Headers */,
+				94A108925C1E26D741F47FBF /* process.h in Headers */,
+				8413C65688610DCA400DBB95 /* protocol.h in Headers */,
+				70C29485F91466494509454A /* random.h in Headers */,
+				F382B5FB1B3CE3C909468FB1 /* screen.h in Headers */,
+				4397F5C5F5CFFED2D2A58019 /* sound.h in Headers */,
+				FFA400A0EECF949F02F7BBA3 /* sp_terp_entry.h in Headers */,
+				F2413507958B8D36DFB62A1A /* spatterlight-autosave.h in Headers */,
+				1B71B200B3B391CA4312F53B /* stack.h in Headers */,
+				1458036DA024B01A9696B39F /* stash.h in Headers */,
+				1A3E4A1FCF2C4D6055B51644 /* types.h in Headers */,
+				94184F097319D142E370F108 /* unicode.h in Headers */,
+				42A3EA44E190140E9DF9700F /* util.h in Headers */,
+				9094EADD52CDF3843FB1BFDF /* v1234.h in Headers */,
+				AF9CA852C70906607581D940 /* v6_image.h in Headers */,
+				A42BA26123F145B7A54614F5 /* v6_specific.h in Headers */,
+				FE6CB66847ACFC081B63531D /* woz2nib.h in Headers */,
+				C300CE2E877FB13F08D1BB1B /* zoom.h in Headers */,
+				712DA34EE1AF1F5E1ADAE4F4 /* zterp.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA5016AD04C30FF318EDB8F0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D50729092BB69FBD92CA193 /* DebugLog.h in Headers */,
+				FFC41D7AE0AB64A67B50D8BE /* FileSignature.h in Headers */,
+				8783E0AF3C2D0519CA5D7EC7 /* NSString+Categories.h in Headers */,
+				49A15238DF3F6CFF079D5FD1 /* TempFileRef.h in Headers */,
+				DCF25B49ACD296FA5BFF41C3 /* TempLibrary.h in Headers */,
+				BB5E20A93FF1A49C52F89F30 /* TempSChannel.h in Headers */,
+				DB5D2D451C56120CECC053F6 /* TempStream.h in Headers */,
+				6736847704481E45076E9EE6 /* TempWindow.h in Headers */,
+				D38F6A2725D8FBFAA158DB47 /* autosavefiles.h in Headers */,
+				863C514B7938E5319C5A6724 /* fileref.h in Headers */,
+				B41536FA60B43B90CBA242E6 /* gestalt.h in Headers */,
+				13BC8B62EEA07F8078CEFC46 /* gi_blorb.h in Headers */,
+				014D4DDBAA682BB1CF28E0F5 /* gi_debug.h in Headers */,
+				6E0E7A69D722AF63EA727955 /* gi_dispa.h in Headers */,
+				8B561FB9B3C5F187A15EA874 /* glk.h in Headers */,
+				7D92C393C92E647B3CB88014 /* glkimp.h in Headers */,
+				FD0B4DFE54BAAAC77E75E0DD /* glkstart.h in Headers */,
+				BD01FF49DF0A0B49747E25CE /* glulxe.h in Headers */,
+				DF86BD5EBD269985B70E01F7 /* messagenames.h in Headers */,
+				1910AF085EE072E2A373E4F5 /* opcodes.h in Headers */,
+				BDF7C48CE928E8A162AA54F7 /* protocol.h in Headers */,
+				2452EB5B0045390E622FDAFC /* sp_terp_entry.h in Headers */,
+				5B5A467C4ADE465D797817E3 /* spatterstart.h in Headers */,
+				DB3D5FE00508728AE1FFF0BD /* unixstrt.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		14A154AAAAD242BEF7165AA9 /* bocfel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E0B7FF3EC4806230085CB37 /* Build configuration list for PBXNativeTarget "bocfel" */;
+			buildPhases = (
+				937D0C3F5E757E02662B2BF5 /* Headers */,
+				7A33727BD25588BD30067E9D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bocfel;
+			packageProductDependencies = (
+			);
+			productName = bocfel;
+			productReference = 850F52B6557779A6257FB4F1 /* bocfel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6E9CF396AAB8AC1AC049F09E /* glulxe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 741FFDC98C2208B9BC285EA8 /* Build configuration list for PBXNativeTarget "glulxe" */;
+			buildPhases = (
+				EA5016AD04C30FF318EDB8F0 /* Headers */,
+				9B724415B8449778D371518A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = glulxe;
+			packageProductDependencies = (
+			);
+			productName = glulxe;
+			productReference = FFF536ABF7709C641DCAE541 /* glulxe.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9EE1E1799143763918E81545 /* Spatterlight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA55E9950F6B781454274801 /* Build configuration list for PBXNativeTarget "Spatterlight" */;
+			buildPhases = (
+				B2C7F79276F1054A2122DDB0 /* Sources */,
+				B1E803F94A65018DE071A1B6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F80190445A7BA579AED29C39 /* PBXTargetDependency */,
+				7CAA0499A5F2053A168032CB /* PBXTargetDependency */,
+			);
+			name = Spatterlight;
+			packageProductDependencies = (
+			);
+			productName = Spatterlight;
+			productReference = 4C1EB8AA7C194378DB2A24B8 /* Spatterlight.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		338A8E1B4B793C451806AEBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					14A154AAAAD242BEF7165AA9 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					6E9CF396AAB8AC1AC049F09E = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					9EE1E1799143763918E81545 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FE67B14904413D01FD7566B7 /* Build configuration list for PBXProject "SpatterlightiOS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 944EDA17569D5787144D6937;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A3310CAAE5621776C44DEEE2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9EE1E1799143763918E81545 /* Spatterlight */,
+				14A154AAAAD242BEF7165AA9 /* bocfel */,
+				6E9CF396AAB8AC1AC049F09E /* glulxe */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A33727BD25588BD30067E9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02F4B8AEEB6E9A4ACFA55947 /* FileSignature.m in Sources */,
+				302CC8E314237839B4E19FB6 /* NSString+SignatureOnly.m in Sources */,
+				08D5C86417745400A654933A /* TempFileRef.m in Sources */,
+				0532F4A3513ACDE96B7B911B /* TempLibrary.m in Sources */,
+				087F580034B9C1078BDA5BFB /* TempSChannel.m in Sources */,
+				54D2D4C83D5FC2C8E365AD16 /* TempStream.m in Sources */,
+				D52CB256DFDFA3CDBD31CE8E /* TempWindow.m in Sources */,
+				E148C4D49FCC6C382D5B7700 /* arthur.cpp in Sources */,
+				659A8D99358C04E64A27BE1C /* autosavefiles.m in Sources */,
+				BD83D503B718F52A38CB9920 /* blorb.c in Sources */,
+				99C8554507CA0B123D0812ED /* blorb.cpp in Sources */,
+				45460B40E6C74D8F3BBFB135 /* branch.cpp in Sources */,
+				E7181E511EC077325EC7494E /* cgdate.c in Sources */,
+				D5BBB482B3AFEBBCFC4A1939 /* cgunicod.c in Sources */,
+				CBAE831F49FD3A2172FEA714 /* ciderpress.c in Sources */,
+				639E112E0CF7F8517E856D00 /* connect.c in Sources */,
+				0C49500960409117CC201B44 /* decompress_amiga.cpp in Sources */,
+				8449163514981796D6DE1C9D /* decompress_vga.cpp in Sources */,
+				768AF454001314E0553A0B26 /* dict.cpp in Sources */,
+				885181FD9B0120D0C22BC2AB /* draw_apple_2.cpp in Sources */,
+				63616517F2E6015459D299AE /* draw_border.cpp in Sources */,
+				37351A67D0DD84505BCB8D06 /* draw_image.cpp in Sources */,
+				ABC9577981E0C4AA2097711F /* draw_png.cpp in Sources */,
+				CC73515EE56320FF9D0834CF /* entrypoints.cpp in Sources */,
+				1264FA97D0C540AD0F15760E /* entrypoints_arthur.cpp in Sources */,
+				887B6E412ED3882DFEB78106 /* entrypoints_journey.cpp in Sources */,
+				337C2FEA6D709A3473655C6F /* entrypoints_shogun.cpp in Sources */,
+				055C1D3A1EF80672436086DF /* entrypoints_zorkzero.cpp in Sources */,
+				1821FA73C3D8B7A09E303E03 /* event.c in Sources */,
+				B1F3AB9F391CBEFA1E1E50F8 /* extract_apple_2.cpp in Sources */,
+				5ACA8DB39FA604EDBBE6DF73 /* extract_image_data.cpp in Sources */,
+				B4AE64D56E3857E43E9F2EAB /* fileref.c in Sources */,
+				D7FA90FC2FAF0034D968E498 /* fileref.m in Sources */,
+				78F75B2A96153E8364ED3058 /* fileresource.c in Sources */,
+				85CD857D0C4A1BC10B66963A /* find_graphics_files.cpp in Sources */,
+				D79BA6C3FF828F2F32164821 /* gestalt.c in Sources */,
+				CB218235532B31916F3758F2 /* gi_blorb.c in Sources */,
+				94D21DAB321DCCAE3BE190E4 /* gi_debug.c in Sources */,
+				654C70D64751FF4AECFFC287 /* gi_dispa.c in Sources */,
+				A5E0AD3942947DFD8C36E127 /* glkautosave.cpp in Sources */,
+				A461FDDA7DD093E1B4BD2B29 /* glkstart.cpp in Sources */,
+				BC602E909418C50E028DEEBE /* iff.cpp in Sources */,
+				6599296C707B917E5EA30EE3 /* image.c in Sources */,
+				D40AA3F6BE125CD48A9C9925 /* io.cpp in Sources */,
+				27F6D5AD4A6ADB302A719F74 /* journey.cpp in Sources */,
+				E99809B72E880A2A5192029D /* main.c in Sources */,
+				7ABDA9E1EB62F536442376ED /* mathop.cpp in Sources */,
+				08F4B91D2DBE95CCF8C5FDE8 /* memory.cpp in Sources */,
+				8DAA15B37EBD9B1EC38DCBD9 /* memory_allocation.cpp in Sources */,
+				E0BB0F89BE173C41A235D122 /* messagenames.c in Sources */,
+				ED0CAEE71B5D3E13CC301300 /* meta.cpp in Sources */,
+				EAC45A1374330ACADDC2F737 /* misc.c in Sources */,
+				BE48EF973D72714EC633C13E /* objects.cpp in Sources */,
+				108DCE171DFFDD44B95EB7C0 /* options.cpp in Sources */,
+				967350A4CC5A55708EA2C96F /* osdep.cpp in Sources */,
+				6D6E6622D7034249F0F24237 /* patches.cpp in Sources */,
+				04024AA2D47E5A7C6E3DB159 /* process.cpp in Sources */,
+				AB1DB4C9275523372F506DD3 /* random.cpp in Sources */,
+				2A52F789B6FE0E9B0599C7F8 /* screen.cpp in Sources */,
+				B1E2E057368EE7E7C7DBE8CE /* shogun.cpp in Sources */,
+				5E0B6F9E8B5435D1C77C3E53 /* sound.c in Sources */,
+				D733B84E55E4EC7D0FEF4471 /* sound.cpp in Sources */,
+				81826AC4A2E2468D0D492F49 /* sp_terp_entry.c in Sources */,
+				C6D16A64B8F8B4966792D805 /* spatterlight-autosave.mm in Sources */,
+				CF3E6FC89771F07F9989E3F5 /* stack.cpp in Sources */,
+				19CF021D689112E94E90E302 /* stash.cpp in Sources */,
+				A3663EBFDBA05EBC84B3320A /* stream.c in Sources */,
+				74A715D07D607C44BC05024B /* stylehint.c in Sources */,
+				E7CEE531270A700C6CAFF98B /* unicode.cpp in Sources */,
+				D981259E5BC83BA490E4A8D2 /* util.cpp in Sources */,
+				6C5599976C3B2DBF4B53D3B7 /* v6_definitions.cpp in Sources */,
+				B55B5687DBC80B54163FD52B /* v6_hints.cpp in Sources */,
+				6DEABFBA78BA861A46F1EA62 /* v6_shared.cpp in Sources */,
+				CA8A7F1CC75A44F0A56C5F2E /* window.c in Sources */,
+				96A061B56C75650B8F82ADA2 /* woz2nib.c in Sources */,
+				D452F4F56EE50767A73FAE8B /* writetiff.cpp in Sources */,
+				E3379F31CBBD0CF1672FCB6A /* zoom.cpp in Sources */,
+				A27B29D5324DE8C300DF6635 /* zorkzero.cpp in Sources */,
+				AEAB2EAEAEF45A841104CBC0 /* zorkzero_minigames.cpp in Sources */,
+				FD9751C2431F23EF2B5BD47A /* zterp.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B724415B8449778D371518A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				640D6818C8917BC946B61478 /* FileSignature.m in Sources */,
+				71992F345D301068A2694272 /* NSString+SignatureOnly.m in Sources */,
+				F941ECB282F9045BE4A1FDE3 /* TempFileRef.m in Sources */,
+				FA9EC07934BF54390BE9BAEB /* TempLibrary.m in Sources */,
+				780A58F6C9680BBC01099A62 /* TempSChannel.m in Sources */,
+				24CECC3EA5129C24A4D2F3CA /* TempStream.m in Sources */,
+				F49FC091BD5AE0AA405354DA /* TempWindow.m in Sources */,
+				DD44A7049C212167C6A717CD /* accel.c in Sources */,
+				DCBFE4FE834DC63F18B36D25 /* autosavefiles.m in Sources */,
+				0D815245CF70053ACB00BF12 /* blorb.c in Sources */,
+				1E5D8539B18610DBA588E2A6 /* cgdate.c in Sources */,
+				E250B6B01DF945C3B2D48997 /* cgunicod.c in Sources */,
+				5203AEB76C5A2894AAE0975F /* connect.c in Sources */,
+				68BF5157A7A61D5D908FC060 /* event.c in Sources */,
+				2FFDEAE4B08C46E79379D1FC /* exec.c in Sources */,
+				5910F63D001A12E31A5030E0 /* fileref.c in Sources */,
+				42047F73551216569DDBE89E /* fileref.m in Sources */,
+				AAD398DC2DD9CE63118413A5 /* fileresource.c in Sources */,
+				FBAABE5AE0FB4B84E2400536 /* files.c in Sources */,
+				09D429C21289F38CEE0F41BC /* float.c in Sources */,
+				CCB2D787C91754283843FB19 /* funcs.c in Sources */,
+				E71C3FC334E66E0A98DDA104 /* gestalt.c in Sources */,
+				D7ECC2D7CA1BC9BFC03679EC /* gestalt.c in Sources */,
+				592B87BD76D9CF18877CC484 /* gi_blorb.c in Sources */,
+				62882630C9E04CADC7FB01BB /* gi_debug.c in Sources */,
+				1588D03F3C0D3EE9FF6EEEA1 /* gi_dispa.c in Sources */,
+				A68CCC6DA4BBDD9026EC3731 /* glkop.c in Sources */,
+				1B4345DDA0835E4DF2CF6F5C /* heap.c in Sources */,
+				1030CF9CA189F49230D73017 /* image.c in Sources */,
+				12856573C39529035350D94E /* main.c in Sources */,
+				C8D8906F39F02279C2A147ED /* main.c in Sources */,
+				5AD6C7CE1BC4185D614535F9 /* messagenames.c in Sources */,
+				BA20B41DBCCC195198B2417A /* misc.c in Sources */,
+				587F10636B31187076A3BCAF /* operand.c in Sources */,
+				2E87795423F99A11DC610BD0 /* osdepend.c in Sources */,
+				D32B385FF04E6B74F3F0AE42 /* profile.c in Sources */,
+				A337A4D8DA50AB99017C1679 /* search.c in Sources */,
+				E35F6A7F79153DE7F43939BC /* serial.c in Sources */,
+				41BDB990E080D73DF8229D90 /* sound.c in Sources */,
+				FC63FF059EDB0D6179A12222 /* sp_terp_entry.c in Sources */,
+				02E948CF4CBEF53142647C25 /* spatterstart.m in Sources */,
+				18FF4A9120372CBC75FE02C3 /* stream.c in Sources */,
+				2BA83708FE61A4D148CA849E /* string.c in Sources */,
+				9C6E0BC3C7AA286302361E5C /* stylehint.c in Sources */,
+				3B8DB1679F39160B8F5D45B3 /* vm.c in Sources */,
+				F6679CA8C77D9205990E2A3A /* window.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C7F79276F1054A2122DDB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B7131B3525797AC788939B /* AppDelegate.swift in Sources */,
+				9E26062DF9DFD231E0FF4516 /* FileSignature.m in Sources */,
+				9A6FC3596A8D5FDC2A3BF11C /* GameViewController.swift in Sources */,
+				673C107835F2F6F873DA44B8 /* GlkDisplay.swift in Sources */,
+				0C45362D860A3847DA9F3A26 /* GlkSession.swift in Sources */,
+				CE33DC8ABBCFEEC91F388917 /* GlkStyles.swift in Sources */,
+				9C1505A07427A032CFCFAD79 /* GlkWindowViews.swift in Sources */,
+				A74EF8A68A5A4A0FDF0538D4 /* InputBar.swift in Sources */,
+				78DBD958EDCE26E4453A9DBE /* Library.swift in Sources */,
+				6E012A8BFE4793E65AD9F993 /* LibraryViewController.swift in Sources */,
+				E7D0A6294A802C97F4185DDC /* RootViewController.swift in Sources */,
+				127A3914B8B2DA44A4FBCF43 /* Settings.swift in Sources */,
+				5296EE62157179A2F4397167 /* SettingsView.swift in Sources */,
+				DAB069DF0DA49FB0192C0386 /* SidePane.swift in Sources */,
+				16356D19B0234F825EC62783 /* TerpRuntime.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CAA0499A5F2053A168032CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14A154AAAAD242BEF7165AA9 /* bocfel */;
+			targetProxy = BAF8A9E74657E901F2F67EB4 /* PBXContainerItemProxy */;
+		};
+		F80190445A7BA579AED29C39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E9CF396AAB8AC1AC049F09E /* glulxe */;
+			targetProxy = 008C953965FE7576D467B5D3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E8E39EC60C4CA4CF34D9751 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SPATTERLIGHT_IOS=1",
+					"exit=sp_terp_exit",
+					"$(inherited)",
+					GARGLK,
+					GLKUNIX_AUTOSAVE_FEATURES,
+					OS_MAC,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../glkimp",
+					"$(SRCROOT)/../glkimp/autorestore",
+					"$(SRCROOT)/../application",
+					"$(SRCROOT)/TerpGlue",
+					"$(SRCROOT)/../terps/common_utils",
+					"$(inherited)",
+					"$(SRCROOT)/../terps/glulxe",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-Wl,-init,_sp_terp_early_init",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spatterlight.terp.$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		37A6BE0A100942159780E892 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-w",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4193C14D82392F4A32202FD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../glkimp",
+					"$(SRCROOT)/../application",
+					"$(SRCROOT)/TerpGlue",
+				);
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spatterlight.ios;
+				PRODUCT_NAME = Spatterlight;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/App/SpatterlightiOS-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84AA1C8D20C7970F9711FA7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SPATTERLIGHT_IOS=1",
+					"exit=sp_terp_exit",
+					"$(inherited)",
+					ZTERP_GLK,
+					GARGLK,
+					SPATTERLIGHT,
+					ZTERP_GLK_BLORB,
+					ZTERP_GLK_UNIX,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../glkimp",
+					"$(SRCROOT)/../glkimp/autorestore",
+					"$(SRCROOT)/../application",
+					"$(SRCROOT)/TerpGlue",
+					"$(SRCROOT)/../terps/common_utils",
+					"$(inherited)",
+					"$(SRCROOT)/../terps/bocfel",
+					"$(SRCROOT)/../terps/bocfel/z6",
+					"$(SRCROOT)/../terps/readwoz",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-Wl,-init,_sp_terp_early_init",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spatterlight.terp.$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		945B1097B91F5E436030A7F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../glkimp",
+					"$(SRCROOT)/../application",
+					"$(SRCROOT)/TerpGlue",
+				);
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spatterlight.ios;
+				PRODUCT_NAME = Spatterlight;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/App/SpatterlightiOS-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		95580C297F6884D4B370F003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SPATTERLIGHT_IOS=1",
+					"exit=sp_terp_exit",
+					"$(inherited)",
+					GARGLK,
+					GLKUNIX_AUTOSAVE_FEATURES,
+					OS_MAC,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../glkimp",
+					"$(SRCROOT)/../glkimp/autorestore",
+					"$(SRCROOT)/../application",
+					"$(SRCROOT)/TerpGlue",
+					"$(SRCROOT)/../terps/common_utils",
+					"$(inherited)",
+					"$(SRCROOT)/../terps/glulxe",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-Wl,-init,_sp_terp_early_init",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spatterlight.terp.$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		CBACD3D9EADEF40490895808 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SPATTERLIGHT_IOS=1",
+					"exit=sp_terp_exit",
+					"$(inherited)",
+					ZTERP_GLK,
+					GARGLK,
+					SPATTERLIGHT,
+					ZTERP_GLK_BLORB,
+					ZTERP_GLK_UNIX,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../glkimp",
+					"$(SRCROOT)/../glkimp/autorestore",
+					"$(SRCROOT)/../application",
+					"$(SRCROOT)/TerpGlue",
+					"$(SRCROOT)/../terps/common_utils",
+					"$(inherited)",
+					"$(SRCROOT)/../terps/bocfel",
+					"$(SRCROOT)/../terps/bocfel/z6",
+					"$(SRCROOT)/../terps/readwoz",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-Wl,-init,_sp_terp_early_init",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spatterlight.terp.$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		E9CBFF62F985B18D142B9D51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-w",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-w",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E0B7FF3EC4806230085CB37 /* Build configuration list for PBXNativeTarget "bocfel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBACD3D9EADEF40490895808 /* Debug */,
+				84AA1C8D20C7970F9711FA7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		741FFDC98C2208B9BC285EA8 /* Build configuration list for PBXNativeTarget "glulxe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E8E39EC60C4CA4CF34D9751 /* Debug */,
+				95580C297F6884D4B370F003 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA55E9950F6B781454274801 /* Build configuration list for PBXNativeTarget "Spatterlight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4193C14D82392F4A32202FD8 /* Debug */,
+				945B1097B91F5E436030A7F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FE67B14904413D01FD7566B7 /* Build configuration list for PBXProject "SpatterlightiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37A6BE0A100942159780E892 /* Debug */,
+				E9CBFF62F985B18D142B9D51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 338A8E1B4B793C451806AEBA /* Project object */;
+}

@@ -70,8 +70,7 @@ GLK_ATTRIBUTE_NORETURN void glk_exit(void)
        temp directory can go even when the session will be autorestored. */
     gli_cleanup_tempdir();
 
-    close(0);
-    close(1);
+    gli_close_pipe_fds();
     exit(0);
 }
 

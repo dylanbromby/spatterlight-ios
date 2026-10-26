@@ -23,6 +23,10 @@ enum
     ERRORS_ARE_FATAL
 };
 
+/* connect.c */
+void gli_set_pipe_fds(int read_fd, int send_fd);
+void gli_close_pipe_fds(void);
+
 extern int gli_enable_graphics;
 extern int gli_enable_sound;
 extern int gli_enable_styles;

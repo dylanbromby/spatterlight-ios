@@ -1,0 +1,225 @@
+name: SpatterlightiOS
+
+# Generate the Xcode project with `xcodegen` (brew install xcodegen). The macOS
+# project is untouched: this one reads the same interpreter and Glk sources.
+
+options:
+  bundleIdPrefix: com.spatterlight
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CLANG_ENABLE_OBJC_ARC: YES
+    GCC_OPTIMIZATION_LEVEL: "3"
+    GCC_C_LANGUAGE_STANDARD: gnu17
+    CLANG_CXX_LANGUAGE_STANDARD: c++17
+    CLANG_CXX_LIBRARY: libc++
+    GCC_WARN_64_TO_32_BIT_CONVERSION: NO
+    GCC_NO_COMMON_BLOCKS: YES
+    OTHER_CFLAGS: ["-w"]
+    OTHER_CPLUSPLUSFLAGS: ["-w"]
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_IDENTITY: "-"
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+    DEAD_CODE_STRIPPING: YES
+    DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+
+targetTemplates:
+  # One interpreter, built as a framework the app dlopens. Each one carries its
+  # own copy of the Glk library, so the interpreters share no state, and
+  # exit() is redirected so that a game ending does not end the app.
+  Terp:
+    type: framework
+    platform: iOS
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_NAME: "$(TARGET_NAME)"
+        PRODUCT_BUNDLE_IDENTIFIER: "com.spatterlight.terp.$(TARGET_NAME)"
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0"
+        DEFINES_MODULE: NO
+        SKIP_INSTALL: YES
+        GCC_PREPROCESSOR_DEFINITIONS: ["$(inherited)", "SPATTERLIGHT_IOS=1", "exit=sp_terp_exit"]
+        HEADER_SEARCH_PATHS:
+          - "$(SRCROOT)/../glkimp"
+          - "$(SRCROOT)/../glkimp/autorestore"
+          - "$(SRCROOT)/../application"
+          - "$(SRCROOT)/TerpGlue"
+          - "$(SRCROOT)/../terps/common_utils"
+        OTHER_LDFLAGS: ["-lz", "-Wl,-init,_sp_terp_early_init"]
+    sources:
+      - path: ../glkimp
+        includes:
+          - "*.c"
+          - "*.m"
+          - "*.h"
+          - "autorestore/*.m"
+          - "autorestore/*.h"
+        excludes:
+          - main.c
+          - cgunigen.c
+      - path: ../glkimp/main.c
+        compilerFlags: ["-Dmain=spatterlight_terp_main"]
+      - path: ../application/FileSignature.m
+      - path: ../application/FileSignature.h
+      - path: ../application/NSString+Categories.h
+      - path: ../application/DebugLog.h
+      - path: TerpGlue
+
+targets:
+  glulxe:
+    templates: [Terp]
+    settings:
+      base:
+        GCC_PREPROCESSOR_DEFINITIONS: ["$(inherited)", "GARGLK", "GLKUNIX_AUTOSAVE_FEATURES", "OS_MAC"]
+        HEADER_SEARCH_PATHS: ["$(inherited)", "$(SRCROOT)/../terps/glulxe"]
+    sources:
+      - path: ../terps/glulxe
+        includes:
+          - "spatterstart.m"
+          - "spatterstart.h"
+          - "exec.c"
+          - "accel.c"
+          - "files.c"
+          - "float.c"
+          - "funcs.c"
+          - "gestalt.c"
+          - "glkop.c"
+          - "heap.c"
+          - "main.c"
+          - "operand.c"
+          - "osdepend.c"
+          - "profile.c"
+          - "search.c"
+          - "serial.c"
+          - "string.c"
+          - "vm.c"
+          - "*.h"
+
+  bocfel:
+    templates: [Terp]
+    settings:
+      base:
+        GCC_PREPROCESSOR_DEFINITIONS: ["$(inherited)", "ZTERP_GLK", "GARGLK", "SPATTERLIGHT", "ZTERP_GLK_BLORB", "ZTERP_GLK_UNIX"]
+        HEADER_SEARCH_PATHS: ["$(inherited)", "$(SRCROOT)/../terps/bocfel", "$(SRCROOT)/../terps/bocfel/z6", "$(SRCROOT)/../terps/readwoz"]
+    sources:
+      - path: ../terps/bocfel/z6/zorkzero.cpp
+      - path: ../terps/bocfel/z6/zorkzero_minigames.cpp
+      - path: ../terps/bocfel/bocfel-spatterlight/spatterlight-autosave.mm
+      - path: ../terps/bocfel/z6/arthur.cpp
+      - path: ../terps/bocfel/z6/journey.cpp
+      - path: ../terps/bocfel/z6/shogun.cpp
+      - path: ../terps/bocfel/z6/v6_shared.cpp
+      - path: ../terps/bocfel/z6/v6_definitions.cpp
+      - path: ../terps/bocfel/z6/v6_hints.cpp
+      - path: ../terps/bocfel/z6/entrypoints.cpp
+      - path: ../terps/bocfel/z6/entrypoints_arthur.cpp
+      - path: ../terps/bocfel/z6/entrypoints_journey.cpp
+      - path: ../terps/bocfel/z6/entrypoints_shogun.cpp
+      - path: ../terps/bocfel/z6/entrypoints_zorkzero.cpp
+      - path: ../terps/bocfel/z6/extract_apple_2.cpp
+      - path: ../terps/bocfel/z6/extract_image_data.cpp
+      - path: ../terps/bocfel/z6/find_graphics_files.cpp
+      - path: ../terps/bocfel/z6/draw_apple_2.cpp
+      - path: ../terps/bocfel/z6/draw_image.cpp
+      - path: ../terps/bocfel/z6/draw_png.cpp
+      - path: ../terps/bocfel/z6/decompress_amiga.cpp
+      - path: ../terps/bocfel/z6/decompress_vga.cpp
+      - path: ../terps/bocfel/z6/writetiff.cpp
+      - path: ../terps/bocfel/z6/memory_allocation.cpp
+      - path: ../terps/bocfel/blorb.cpp
+      - path: ../terps/bocfel/branch.cpp
+      - path: ../terps/bocfel/z6/draw_border.cpp
+      - path: ../terps/bocfel/dict.cpp
+      - path: ../terps/bocfel/glkstart.cpp
+      - path: ../terps/bocfel/mathop.cpp
+      - path: ../terps/bocfel/glkautosave.cpp
+      - path: ../terps/bocfel/stash.cpp
+      - path: ../terps/bocfel/memory.cpp
+      - path: ../terps/bocfel/options.cpp
+      - path: ../terps/bocfel/meta.cpp
+      - path: ../terps/bocfel/objects.cpp
+      - path: ../terps/bocfel/osdep.cpp
+      - path: ../terps/bocfel/patches.cpp
+      - path: ../terps/bocfel/process.cpp
+      - path: ../terps/bocfel/random.cpp
+      - path: ../terps/bocfel/screen.cpp
+      - path: ../terps/bocfel/io.cpp
+      - path: ../terps/bocfel/sound.cpp
+      - path: ../terps/bocfel/stack.cpp
+      - path: ../terps/bocfel/unicode.cpp
+      - path: ../terps/bocfel/util.cpp
+      - path: ../terps/bocfel/iff.cpp
+      - path: ../terps/bocfel/zterp.cpp
+      - path: ../terps/bocfel/zoom.cpp
+      - path: ../terps/bocfel
+        includes: ["*.h", "z6/*.h", "bocfel-spatterlight/*.h"]
+      - path: ../terps/readwoz
+        includes: ["ciderpress.c", "woz2nib.c", "*.h"]
+
+  Spatterlight:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: App
+      - path: ../application/FileSignature.m
+      - path: ../application/FileSignature.h
+    dependencies:
+      - target: glulxe
+        embed: true
+        link: false
+      - target: bocfel
+        embed: true
+        link: false
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Spatterlight
+        UILaunchScreen: {}
+        UIApplicationSupportsIndirectInputEvents: true
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+          - UIInterfaceOrientationPortraitUpsideDown
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default
+                UISceneDelegateClassName: "$(PRODUCT_MODULE_NAME).SceneDelegate"
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Interactive Fiction Story
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes: ["public.data"]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.spatterlight.ios
+        PRODUCT_NAME: Spatterlight
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_OBJC_BRIDGING_HEADER: "$(SRCROOT)/App/SpatterlightiOS-Bridging-Header.h"
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
+        CLANG_ENABLE_OBJC_ARC: YES
+        HEADER_SEARCH_PATHS:
+          - "$(SRCROOT)/../glkimp"
+          - "$(SRCROOT)/../application"
+          - "$(SRCROOT)/TerpGlue"
+    scheme: {}
