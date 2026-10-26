@@ -256,10 +256,23 @@ final class GlkBufferView: UIView, GlkWindowView, UITextViewDelegate {
 
     // MARK: Links
 
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        guard URL.scheme == "glklink", let number = Int(URL.absoluteString.dropFirst("glklink:".count)) else { return true }
-        if linkRequested { onLink?(number) }
-        return false
+    /// The number of a game hyperlink, if this text item is one.
+    private func glkLinkNumber(for item: UITextItem) -> Int? {
+        guard case .link(let url) = item.content, url.scheme == "glklink" else { return nil }
+        return Int(url.absoluteString.dropFirst("glklink:".count))
+    }
+
+    func textView(_ textView: UITextView, primaryActionFor textItem: UITextItem, defaultAction: UIAction) -> UIAction? {
+        guard let number = glkLinkNumber(for: textItem) else { return defaultAction }
+        return UIAction { [weak self] _ in
+            guard let self = self, self.linkRequested else { return }
+            self.onLink?(number)
+        }
+    }
+
+    func textView(_ textView: UITextView, menuConfigurationFor textItem: UITextItem, defaultMenu: UIMenu) -> UITextItem.MenuConfiguration? {
+        // A game link is not a web address: no preview or share menu.
+        glkLinkNumber(for: textItem) == nil ? UITextItem.MenuConfiguration(menu: defaultMenu) : nil
     }
 
     func textViewDidChangeSelection(_ textView: UITextView) {}

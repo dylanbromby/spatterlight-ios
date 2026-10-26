@@ -310,7 +310,7 @@
 		4657B16092B8DA1976DEACA4 /* dict.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dict.cpp; sourceTree = "<group>"; };
 		46B840483CE7D23C87DDC0DE /* connect.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = connect.c; sourceTree = "<group>"; };
 		481765AD1FFC3603B6A3DC25 /* draw_png.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = draw_png.h; sourceTree = "<group>"; };
-		4C1EB8AA7C194378DB2A24B8 /* Spatterlight.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Spatterlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1EB8AA7C194378DB2A24B8 /* Spatterlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spatterlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C89ED9B8902BB25DBD39C46 /* TempSChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempSChannel.m; sourceTree = "<group>"; };
 		502ACE08C97C522C9845989E /* v6_specific.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v6_specific.h; sourceTree = "<group>"; };
 		5268B9C0FD2A0A01B5FC6E9C /* glulxe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glulxe.h; sourceTree = "<group>"; };
@@ -916,7 +916,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					14A154AAAAD242BEF7165AA9 = {
 						DevelopmentTeam = "";
@@ -927,7 +927,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					9EE1E1799143763918E81545 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1239,14 +1238,11 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = (
-					"-w",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-w",
-				);
+				OTHER_CFLAGS = "-w";
+				OTHER_CPLUSPLUSFLAGS = "-w";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1260,6 +1256,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXKPDGDTSU;
 				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../glkimp",
@@ -1339,6 +1336,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZXKPDGDTSU;
 				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../glkimp",
@@ -1512,14 +1510,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-w",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-w",
-				);
+				OTHER_CFLAGS = "-w";
+				OTHER_CPLUSPLUSFLAGS = "-w";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
