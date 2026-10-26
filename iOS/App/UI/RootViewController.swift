@@ -38,6 +38,7 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        paintWindow()
         // `-OpenGame <title>` on the command line opens a story at launch (handy for testing).
         if let title = UserDefaults.standard.string(forKey: "OpenGame"),
            let game = Library.shared.games.first(where: { $0.title.localizedCaseInsensitiveContains(title) }) {
@@ -91,6 +92,13 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
 
         let theme = settings.theme
         overrideUserInterfaceStyle = theme.palette == .system ? .unspecified : (theme.colors(systemIsDark: false).isDark ? .dark : .light)
+        paintWindow()
+    }
+
+    /// Anything the panes do not cover, such as the edge beside a cutout, takes the page colour.
+    private func paintWindow() {
+        let colors = Settings.shared.theme.colors(systemIsDark: traitCollection.userInterfaceStyle == .dark)
+        view.window?.backgroundColor = colors.background
     }
 
     /// Decide whether the screen is wide enough for two panes even if the system calls it compact.

@@ -88,6 +88,7 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         view.addSubview(display)
 
         inputBar.translatesAutoresizingMaskIntoConstraints = false
+        inputBar.apply(colors: styleSheet.colors)
         view.addSubview(inputBar)
 
         var scrollConfig = UIButton.Configuration.filled()
@@ -399,6 +400,7 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         styleSheet = GameViewController.makeStyleSheet(settings: Settings.shared, traits: traitCollection)
         view.backgroundColor = styleSheet.colors.background
         display.apply(styleSheet: styleSheet)
+        inputBar.apply(colors: styleSheet.colors)
         session?.updateStyleSheet(styleSheet)
         // The interpreter sizes its windows from the font size, so tell it.
         session?.gameAreaDidChange(display.bounds.size, force: true)

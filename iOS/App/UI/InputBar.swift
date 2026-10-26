@@ -3,6 +3,16 @@ import UIKit
 /// A text field that reports each key as it is typed, for games that wait for a keypress.
 final class KeyCaptureTextField: UITextField {
     var onDeleteBackward: (() -> Void)?
+    /// The colour of the placeholder text, so it can follow the reading theme.
+    var placeholderColor: UIColor? { didSet { setNeedsDisplay() } }
+
+    override func drawPlaceholder(in rect: CGRect) {
+        guard let color = placeholderColor, let placeholder = placeholder else { return super.drawPlaceholder(in: rect) }
+        let attributes: [NSAttributedString.Key: Any] = [.font: font ?? UIFont.preferredFont(forTextStyle: .body), .foregroundColor: color]
+        let size = (placeholder as NSString).size(withAttributes: attributes)
+        (placeholder as NSString).draw(in: CGRect(x: rect.minX, y: rect.minY + (rect.height - size.height) / 2, width: rect.width, height: size.height), withAttributes: attributes)
+    }
+
     override func deleteBackward() {
         if text?.isEmpty ?? true { onDeleteBackward?() }
         super.deleteBackward()
@@ -154,6 +164,23 @@ final class InputBar: UIView, UITextFieldDelegate {
             contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
         ])
         setMode(.idle, showKeyRow: true)
+    }
+
+    // MARK: Theme
+
+    /// Make the bar part of the page: the reading theme's colours instead of the system's.
+    func apply(colors: ReaderTheme.Colors) {
+        blur.isHidden = true
+        backgroundColor = colors.background
+        separator.backgroundColor = colors.text.withAlphaComponent(0.18)
+        field.backgroundColor = colors.gridBackground
+        field.textColor = colors.text
+        field.placeholderColor = colors.text.withAlphaComponent(0.5)
+        field.keyboardAppearance = colors.isDark ? .dark : .light
+        idleLabel.textColor = colors.text.withAlphaComponent(0.7)
+        overrideUserInterfaceStyle = colors.isDark ? .dark : .light
+        // Buttons, the caret and the send arrow take the accent colour.
+        tintColor = colors.input
     }
 
     // MARK: Modes

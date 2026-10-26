@@ -198,6 +198,7 @@
 		DF86BD5EBD269985B70E01F7 /* messagenames.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CD91057C72A28E7A2EA77C4 /* messagenames.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0BB0F89BE173C41A235D122 /* messagenames.c in Sources */ = {isa = PBXBuildFile; fileRef = 36138D84187C09266A1A8691 /* messagenames.c */; };
 		E148C4D49FCC6C382D5B7700 /* arthur.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7330A7A0C8C50E330AF8720B /* arthur.cpp */; };
+		E18902BA586A7315E103C72B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B21DB36C363016114424FD /* Assets.xcassets */; };
 		E250B6B01DF945C3B2D48997 /* cgunicod.c in Sources */ = {isa = PBXBuildFile; fileRef = 2700FA2AD832A28AD5959A04 /* cgunicod.c */; };
 		E3379F31CBBD0CF1672FCB6A /* zoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF17DDE77FDEF97E779E4EB /* zoom.cpp */; };
 		E35F6A7F79153DE7F43939BC /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FBD529A0C0F833889DCAD /* serial.c */; };
@@ -279,6 +280,7 @@
 		1561133B38444602B141A09F /* spatterlight-autosave.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "spatterlight-autosave.h"; sourceTree = "<group>"; };
 		1566F656EDF98975F649239C /* glkimp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glkimp.h; sourceTree = "<group>"; };
 		15CD19CCC740AF03988A439D /* heap.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = heap.c; sourceTree = "<group>"; };
+		18B21DB36C363016114424FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19B72EDFE3E16EF92055F460 /* unicode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode.h; sourceTree = "<group>"; };
 		1B9830C26798C15CA7E39AA9 /* screen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = screen.cpp; sourceTree = "<group>"; };
 		1D3FBD529A0C0F833889DCAD /* serial.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = serial.c; sourceTree = "<group>"; };
@@ -724,6 +726,7 @@
 			isa = PBXGroup;
 			children = (
 				3F507D40C7B0F8F6FD7A9F04 /* AppDelegate.swift */,
+				18B21DB36C363016114424FD /* Assets.xcassets */,
 				8037943FE453AD6344287880 /* Info.plist */,
 				5DCD20B4A1F9140D516C0F88 /* SpatterlightiOS-Bridging-Header.h */,
 				F088306CAF889BDB8331EAAD /* Glk */,
@@ -894,6 +897,7 @@
 			buildConfigurationList = FA55E9950F6B781454274801 /* Build configuration list for PBXNativeTarget "Spatterlight" */;
 			buildPhases = (
 				B2C7F79276F1054A2122DDB0 /* Sources */,
+				B62EBE72FC3A8643557E1F3A /* Resources */,
 				B1E803F94A65018DE071A1B6 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -919,15 +923,15 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					14A154AAAAD242BEF7165AA9 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 2PVQ9CQ7QB;
 						ProvisioningStyle = Automatic;
 					};
 					6E9CF396AAB8AC1AC049F09E = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 2PVQ9CQ7QB;
 						ProvisioningStyle = Automatic;
 					};
 					9EE1E1799143763918E81545 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 2PVQ9CQ7QB;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -952,6 +956,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B62EBE72FC3A8643557E1F3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E18902BA586A7315E103C72B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7A33727BD25588BD30067E9D /* Sources */ = {
@@ -1212,12 +1227,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2PVQ9CQ7QB;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1256,7 +1270,7 @@
 		4193C14D82392F4A32202FD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1335,7 +1349,7 @@
 		945B1097B91F5E436030A7F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1491,12 +1505,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2PVQ9CQ7QB;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
