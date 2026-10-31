@@ -140,6 +140,7 @@
 		A5E0AD3942947DFD8C36E127 /* glkautosave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821A5DA5EC8D449E35B8AF36 /* glkautosave.cpp */; };
 		A68CCC6DA4BBDD9026EC3731 /* glkop.c in Sources */ = {isa = PBXBuildFile; fileRef = 711941E44B748B9ACBA45C24 /* glkop.c */; };
 		A74EF8A68A5A4A0FDF0538D4 /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3EC9320664697009219B11 /* InputBar.swift */; };
+		A7E5B94107669E283D7FDA56 /* IFDBCoverFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4BC66BD0234F3084CFB6D9 /* IFDBCoverFetcher.swift */; };
 		AAD398DC2DD9CE63118413A5 /* fileresource.c in Sources */ = {isa = PBXBuildFile; fileRef = B9008854111A25394E435347 /* fileresource.c */; };
 		AB1DB4C9275523372F506DD3 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69F9EF7FB4DA2A20898FF8A6 /* random.cpp */; };
 		ABC9577981E0C4AA2097711F /* draw_png.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C51D59D80FDED74827C8AEA4 /* draw_png.cpp */; };
@@ -162,6 +163,7 @@
 		BD83D503B718F52A38CB9920 /* blorb.c in Sources */ = {isa = PBXBuildFile; fileRef = 79B4196370676C6005ED9105 /* blorb.c */; };
 		BDF7C48CE928E8A162AA54F7 /* protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0953D50E5648D6B4BF0698EC /* protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE48EF973D72714EC633C13E /* objects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 456455EBE428DF3422791347 /* objects.cpp */; };
+		BFA00B08CD129BB2CE439D3E /* StoryIFID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D428F8D69770730D55E12A /* StoryIFID.swift */; };
 		C130590842720A6C1EDA8336 /* glkstart.h in Headers */ = {isa = PBXBuildFile; fileRef = C7BBE477B377A373D65370FF /* glkstart.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C300CE2E877FB13F08D1BB1B /* zoom.h in Headers */ = {isa = PBXBuildFile; fileRef = 01E947E2883033E13F7D2240 /* zoom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6D16A64B8F8B4966792D805 /* spatterlight-autosave.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE87B9D9BE1CB9AF3712A579 /* spatterlight-autosave.mm */; };
@@ -172,6 +174,7 @@
 		CA8A7F1CC75A44F0A56C5F2E /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = F02C68DC970D139B28DC4332 /* window.c */; };
 		CB218235532B31916F3758F2 /* gi_blorb.c in Sources */ = {isa = PBXBuildFile; fileRef = D0C836A15082E39ED1EACCCB /* gi_blorb.c */; };
 		CBAE831F49FD3A2172FEA714 /* ciderpress.c in Sources */ = {isa = PBXBuildFile; fileRef = 9314D27679F155F289138016 /* ciderpress.c */; };
+		CBD0CD8DA1451EA95DFAE1DB /* InvisiCluesExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D1A7D8D8AA9F38FD03C2E /* InvisiCluesExtrasViewController.swift */; };
 		CC73515EE56320FF9D0834CF /* entrypoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A29F2767BF23CE224FF86DA /* entrypoints.cpp */; };
 		CCB2D787C91754283843FB19 /* funcs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8579DA7833B53CE54636B1AF /* funcs.c */; };
 		CD195668A708B2CD7931C37C /* glkautosave.h in Headers */ = {isa = PBXBuildFile; fileRef = ED106E958D902EC5495D94C6 /* glkautosave.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -182,6 +185,7 @@
 		D38F6A2725D8FBFAA158DB47 /* autosavefiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 65D3474BCF7156408F937F13 /* autosavefiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D40AA3F6BE125CD48A9C9925 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26526D87959BC6F1A89454C2 /* io.cpp */; };
 		D452F4F56EE50767A73FAE8B /* writetiff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0315DC35D10EC66C57AEE1FD /* writetiff.cpp */; };
+		D475B5B9395A926961A4F2EA /* InvisiCluesAssetFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D7C37D71E9C841971959D /* InvisiCluesAssetFetcher.swift */; };
 		D52CB256DFDFA3CDBD31CE8E /* TempWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FF13B1B77B8B9CB883E5FE4B /* TempWindow.m */; };
 		D5BBB482B3AFEBBCFC4A1939 /* cgunicod.c in Sources */ = {isa = PBXBuildFile; fileRef = 2700FA2AD832A28AD5959A04 /* cgunicod.c */; };
 		D733B84E55E4EC7D0FEF4471 /* sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6713528F9FB8B5A62D3DC744 /* sound.cpp */; };
@@ -203,6 +207,7 @@
 		E3379F31CBBD0CF1672FCB6A /* zoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF17DDE77FDEF97E779E4EB /* zoom.cpp */; };
 		E35F6A7F79153DE7F43939BC /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FBD529A0C0F833889DCAD /* serial.c */; };
 		E4219FBF97880D6C3CD905B6 /* TempStream.h in Headers */ = {isa = PBXBuildFile; fileRef = D54462AD94B3EB2CA0A8060F /* TempStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5C1D42B8510FCEE54556607 /* BundledGameAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A1FAD43C98436435181C7 /* BundledGameAssets.swift */; };
 		E7181E511EC077325EC7494E /* cgdate.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B706C38220F8FF7FEB0B67 /* cgdate.c */; };
 		E71C3FC334E66E0A98DDA104 /* gestalt.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FE268C3F6E496A0605A2185 /* gestalt.c */; };
 		E7CEE531270A700C6CAFF98B /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC5A1BB87802D6DCC77CB1C7 /* unicode.cpp */; };
@@ -213,6 +218,7 @@
 		EA4D6A2C5CBD08845D7B2F4F /* dict.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EB1BDE5CB3BB2E8C996AB37 /* dict.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAC45A1374330ACADDC2F737 /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = E04C1088A630C2C1D732C809 /* misc.c */; };
 		ED0CAEE71B5D3E13CC301300 /* meta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCD39C8EC8275B8F59E56047 /* meta.cpp */; };
+		EE40AEA20E8C37E1BA624D4A /* InvisiCluesCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BD0BBEF288470CD8EA8CEF /* InvisiCluesCatalog.swift */; };
 		F2413507958B8D36DFB62A1A /* spatterlight-autosave.h in Headers */ = {isa = PBXBuildFile; fileRef = 1561133B38444602B141A09F /* spatterlight-autosave.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F382B5FB1B3CE3C909468FB1 /* screen.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B27735A96101EDEC004691 /* screen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F49FC091BD5AE0AA405354DA /* TempWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FF13B1B77B8B9CB883E5FE4B /* TempWindow.m */; };
@@ -280,11 +286,14 @@
 		1561133B38444602B141A09F /* spatterlight-autosave.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "spatterlight-autosave.h"; sourceTree = "<group>"; };
 		1566F656EDF98975F649239C /* glkimp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glkimp.h; sourceTree = "<group>"; };
 		15CD19CCC740AF03988A439D /* heap.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = heap.c; sourceTree = "<group>"; };
+		186A1FAD43C98436435181C7 /* BundledGameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledGameAssets.swift; sourceTree = "<group>"; };
 		18B21DB36C363016114424FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19B72EDFE3E16EF92055F460 /* unicode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unicode.h; sourceTree = "<group>"; };
+		1B4BC66BD0234F3084CFB6D9 /* IFDBCoverFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFDBCoverFetcher.swift; sourceTree = "<group>"; };
 		1B9830C26798C15CA7E39AA9 /* screen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = screen.cpp; sourceTree = "<group>"; };
 		1D3FBD529A0C0F833889DCAD /* serial.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = serial.c; sourceTree = "<group>"; };
 		1F13B93E2EA50DFD9681A7A2 /* gi_debug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gi_debug.c; sourceTree = "<group>"; };
+		208D7C37D71E9C841971959D /* InvisiCluesAssetFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisiCluesAssetFetcher.swift; sourceTree = "<group>"; };
 		21B706C38220F8FF7FEB0B67 /* cgdate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cgdate.c; sourceTree = "<group>"; };
 		22CC1DFE196AF9BB5DDDACD5 /* search.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = search.c; sourceTree = "<group>"; };
 		246341B1444EA0BBE6454054 /* stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stack.cpp; sourceTree = "<group>"; };
@@ -300,6 +309,7 @@
 		32A88B03C0AAC8D63AB9E584 /* zterp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = zterp.cpp; sourceTree = "<group>"; };
 		36138D84187C09266A1A8691 /* messagenames.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = messagenames.c; sourceTree = "<group>"; };
 		368C0CA53AE9D393D22D59EF /* blorb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blorb.h; sourceTree = "<group>"; };
+		38BD0BBEF288470CD8EA8CEF /* InvisiCluesCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisiCluesCatalog.swift; sourceTree = "<group>"; };
 		3CD91057C72A28E7A2EA77C4 /* messagenames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messagenames.h; sourceTree = "<group>"; };
 		3E21DE6E862A7D03F182FA43 /* v6_definitions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = v6_definitions.cpp; sourceTree = "<group>"; };
 		3F507D40C7B0F8F6FD7A9F04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -332,11 +342,13 @@
 		684B293E427528ED0068E461 /* memory_allocation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = memory_allocation.cpp; sourceTree = "<group>"; };
 		69F9EF7FB4DA2A20898FF8A6 /* random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = random.cpp; sourceTree = "<group>"; };
 		6A8EC7BF70920A4D2A4F4755 /* TerpRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerpRuntime.swift; sourceTree = "<group>"; };
+		6B4D1A7D8D8AA9F38FD03C2E /* InvisiCluesExtrasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisiCluesExtrasViewController.swift; sourceTree = "<group>"; };
 		6CED7D89C5D3B4B32FDE886E /* osdep.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = osdep.cpp; sourceTree = "<group>"; };
 		6CFCA09850F89EC04134CC42 /* autosavefiles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = autosavefiles.m; sourceTree = "<group>"; };
 		6D5A7EBA5D985275A1DC79DF /* gi_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gi_debug.h; sourceTree = "<group>"; };
 		6F3F59442332B15FBAF8F370 /* DebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
 		711941E44B748B9ACBA45C24 /* glkop.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glkop.c; sourceTree = "<group>"; };
+		71D428F8D69770730D55E12A /* StoryIFID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryIFID.swift; sourceTree = "<group>"; };
 		7241DA148AFF629FFE6DD4BD /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		73266FC43CDBCAE407072E0E /* gi_dispa.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gi_dispa.c; sourceTree = "<group>"; };
 		7330A7A0C8C50E330AF8720B /* arthur.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = arthur.cpp; sourceTree = "<group>"; };
@@ -491,8 +503,13 @@
 		480EC0B97591A5F6D4787B83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				186A1FAD43C98436435181C7 /* BundledGameAssets.swift */,
+				1B4BC66BD0234F3084CFB6D9 /* IFDBCoverFetcher.swift */,
+				208D7C37D71E9C841971959D /* InvisiCluesAssetFetcher.swift */,
+				38BD0BBEF288470CD8EA8CEF /* InvisiCluesCatalog.swift */,
 				7E0EA229D20AFDEE9BC2D094 /* Library.swift */,
 				5747EC9A9C1C1EDDB7F8CDC8 /* Settings.swift */,
+				71D428F8D69770730D55E12A /* StoryIFID.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -606,6 +623,7 @@
 			children = (
 				276E028ABD614626B571CA8C /* GameViewController.swift */,
 				CF3EC9320664697009219B11 /* InputBar.swift */,
+				6B4D1A7D8D8AA9F38FD03C2E /* InvisiCluesExtrasViewController.swift */,
 				7B7E18F733A7C5ACDA7BD2FB /* LibraryViewController.swift */,
 				5ED4A14D7F8C4D219B2935D0 /* RootViewController.swift */,
 				FFB7C1FB2D660F78CB7F5A77 /* SettingsView.swift */,
@@ -1114,19 +1132,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B7131B3525797AC788939B /* AppDelegate.swift in Sources */,
+				E5C1D42B8510FCEE54556607 /* BundledGameAssets.swift in Sources */,
 				9E26062DF9DFD231E0FF4516 /* FileSignature.m in Sources */,
 				9A6FC3596A8D5FDC2A3BF11C /* GameViewController.swift in Sources */,
 				673C107835F2F6F873DA44B8 /* GlkDisplay.swift in Sources */,
 				0C45362D860A3847DA9F3A26 /* GlkSession.swift in Sources */,
 				CE33DC8ABBCFEEC91F388917 /* GlkStyles.swift in Sources */,
 				9C1505A07427A032CFCFAD79 /* GlkWindowViews.swift in Sources */,
+				A7E5B94107669E283D7FDA56 /* IFDBCoverFetcher.swift in Sources */,
 				A74EF8A68A5A4A0FDF0538D4 /* InputBar.swift in Sources */,
+				D475B5B9395A926961A4F2EA /* InvisiCluesAssetFetcher.swift in Sources */,
+				EE40AEA20E8C37E1BA624D4A /* InvisiCluesCatalog.swift in Sources */,
+				CBD0CD8DA1451EA95DFAE1DB /* InvisiCluesExtrasViewController.swift in Sources */,
 				78DBD958EDCE26E4453A9DBE /* Library.swift in Sources */,
 				6E012A8BFE4793E65AD9F993 /* LibraryViewController.swift in Sources */,
 				E7D0A6294A802C97F4185DDC /* RootViewController.swift in Sources */,
 				127A3914B8B2DA44A4FBCF43 /* Settings.swift in Sources */,
 				5296EE62157179A2F4397167 /* SettingsView.swift in Sources */,
 				DAB069DF0DA49FB0192C0386 /* SidePane.swift in Sources */,
+				BFA00B08CD129BB2CE439D3E /* StoryIFID.swift in Sources */,
 				16356D19B0234F825EC62783 /* TerpRuntime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

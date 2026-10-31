@@ -13,6 +13,8 @@ protocol GlkDisplayDelegate: AnyObject {
     func displayInputRequestChanged(_ display: GlkDisplay)
     func display(_ display: GlkDisplay, titleChanged title: String)
     func display(_ display: GlkDisplay, didAppendTextForVoiceOver text: String)
+    /// The windows moved, or a map appeared or went: the size to give the story may have changed.
+    func displayLayoutDidChange(_ display: GlkDisplay)
 }
 
 /// The area where Glk windows live. It applies what the session tells it to,
@@ -31,6 +33,7 @@ final class GlkDisplay: UIView {
     /// The space at the bottom taken by the input bar and keyboard.
     var bottomInset: CGFloat = 0 {
         didSet {
+            if oldValue != bottomInset, besideActive { relayoutWindows() }
             for case let buffer as GlkBufferView in windowViews.values { buffer.bottomInset = insetFor(buffer) }
         }
     }
@@ -55,6 +58,197 @@ final class GlkDisplay: UIView {
 
     private func rank(_ id: Int) -> Int {
         windowViews[id]?.windowType == Int(wintype_TextBuffer) ? id : 100 + id
+    }
+
+    // MARK: Map layout
+    //
+    // A story may open a picture window above the text and draw a map in it. The interpreter lays
+    // every window out itself, so to show the map somewhere else (hidden, or beside the story) we
+    // keep the rectangles it asked for and place the views ourselves.
+
+    /// The size the interpreter was last told the game area is.
+    var toldSize: CGSize = .zero
+    /// V6 Infocom games use full-screen graphics for borders; do not treat them as Glulx-style automaps.
+    var automapLayoutEnabled = true { didSet { if oldValue != automapLayoutEnabled { mapHeightRatio = nil; layoutDidChange() } } }
+    var mapPlacement: MapPlacement = .beside { didSet { if oldValue != mapPlacement { layoutDidChange() } } }
+    /// Show the map as a small translucent panel over the story's top corner when held upright.
+    var mapFloats = true { didSet { if oldValue != mapFloats { layoutDidChange() } } }
+    var mapVisible = true { didSet { if oldValue != mapVisible { layoutDidChange() } } }
+    private var terpRects: [Int: CGRect] = [:]
+    /// How tall the map window comes out, as a fraction of the game area, measured from the interpreter.
+    private var mapHeightRatio: CGFloat?
+
+    /// The picture window across the width of the screen, above the story text, if the story has one.
+    var mapWindowID: Int? {
+        guard automapLayoutEnabled else { return nil }
+        let referenceW = toldSize.width > 0 ? toldSize.width : bounds.width
+        let referenceH = toldSize.height > 0 ? toldSize.height : bounds.height
+        return windowViews.keys.sorted().first { id in
+            isAutomapGraphicsWindow(id: id, referenceWidth: referenceW, referenceHeight: referenceH)
+        }
+    }
+
+    private func isAutomapGraphicsWindow(id: Int, referenceWidth: CGFloat, referenceHeight: CGFloat) -> Bool {
+        guard windowViews[id] is GlkGraphicsView, let rect = terpRects[id], referenceHeight > 0 else { return false }
+        guard rect.width >= referenceWidth * 0.9, rect.height > 0 else { return false }
+        let heightRatio = rect.height / referenceHeight
+        // Full-screen V6 background windows are not automaps.
+        if heightRatio >= 0.72 { return false }
+        if heightRatio < 0.06 { return false }
+        return true
+    }
+
+    var hasMap: Bool { mapWindowID != nil }
+
+    private var besideActive: Bool {
+        mapPlacement == .beside && mapVisible && hasMap && mapHeightRatio != nil && isWideLandscape
+    }
+
+    private var isWideLandscape: Bool {
+        #if DEBUG
+        // `-ForceBeside 12` pretends the screen is landscape for the first 12 seconds (for checking the layout).
+        let seconds = UserDefaults.standard.double(forKey: "ForceBeside")
+        if seconds > 0, ProcessInfo.processInfo.systemUptime - GlkDisplay.launchUptime < seconds { return true }
+        #endif
+        return bounds.width >= 600 && bounds.width > bounds.height * 1.15
+    }
+
+    /// The size to tell the interpreter. With the map beside the story, the story gets half the
+    /// width, and the game area is made tall enough that the map window fills the other half.
+    var terpSize: CGSize {
+        if besideActive, let ratio = mapHeightRatio, ratio > 0.05 {
+            // The map is as tall as what you can see, above the input bar and keyboard.
+            let visible = max(200, bounds.height - bottomInset)
+            return CGSize(width: (bounds.width / 2).rounded(.down), height: (visible / ratio).rounded())
+        }
+        return bounds.size
+    }
+
+    static let launchUptime = ProcessInfo.processInfo.systemUptime
+    private var floatingActive: Bool {
+        mapFloats && mapVisible && hasMap && !besideActive && bounds.width >= 600 && bounds.width <= bounds.height
+    }
+
+    private var layoutIsDirty = false
+
+    private func layoutDidChange() {
+        relayoutWindows()
+        delegate?.displayLayoutDidChange(self)
+    }
+
+    /// Called when the device folds, rotates, or the split pane moves.
+    func relayoutForBoundsChange() {
+        relayoutWindows()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        relayoutWindows()
+    }
+
+    /// The map as a panel in the top right: a third of the width, translucent. The story draws the map
+    /// around the room you are in, so the panel shows the middle of the map window at a reduced scale.
+    private let mapPanelCornerRadius: CGFloat = 12
+    private let mapBackdrop: CALayer = {
+        let layer = CALayer()
+        layer.cornerRadius = 12
+        layer.masksToBounds = true
+        return layer
+    }()
+
+    private func tintBackdrop(_ color: UIColor) {
+        mapBackdrop.backgroundColor = color.withAlphaComponent(0.58).cgColor
+    }
+
+    private func placeFloatingMap(_ view: GlkWindowView, rect: CGRect) {
+        // A tight crop around you: a few rooms, large enough to read the labels.
+        let scale: CGFloat = 0.78
+        let panelWidth = (bounds.width / 3).rounded()
+        let panelHeight = (panelWidth * 0.82).rounded()
+        let panel = CGRect(x: bounds.width - 8 - panelWidth, y: rect.minY + 6, width: panelWidth, height: panelHeight)
+        let source = CGSize(width: panelWidth / scale, height: panelHeight / scale)
+        view.bounds = CGRect(origin: .zero, size: rect.size)
+        view.frameDidChange()
+        view.center = CGPoint(x: panel.midX, y: panel.midY)
+        view.transform = CGAffineTransform(scaleX: scale, y: scale)
+        let visible = CGRect(x: (rect.width - source.width) / 2, y: (rect.height - source.height) / 2, width: source.width, height: source.height)
+        let clip = CAShapeLayer()
+        clip.path = UIBezierPath(roundedRect: visible, cornerRadius: mapPanelCornerRadius / scale).cgPath
+        view.layer.mask = clip
+
+        mapBackdrop.cornerRadius = mapPanelCornerRadius
+        mapBackdrop.mask = nil
+        if let graphics = view as? GlkGraphicsView { tintBackdrop(graphics.backdropColor) }
+        mapBackdrop.frame = panel
+        bringSubviewToFront(view)
+        mapBackdrop.removeFromSuperlayer()
+        layer.insertSublayer(mapBackdrop, below: view.layer)
+    }
+
+    private func relayoutWindows() {
+        let mapID = mapWindowID
+        let mapRect = mapID.flatMap { terpRects[$0] }
+        let hideMap = !mapVisible && mapID != nil
+        let beside = besideActive
+        let floating = floatingActive
+        let shiftUp = (hideMap || beside || floating) ? (mapRect?.height ?? 0) : 0
+        let storyWidth = beside ? terpSize.width : bounds.width
+        let xOffset: CGFloat = beside ? bounds.width - storyWidth : 0
+        for (id, view) in windowViews {
+            guard let rect = terpRects[id] else { continue }
+            if id == mapID {
+                view.isHidden = hideMap
+                view.transform = .identity
+                view.layer.mask = nil
+                if !floating { mapBackdrop.removeFromSuperlayer() }
+                (view as? GlkGraphicsView)?.floating = floating && mapRect != nil
+                if floating, let mapRect = mapRect {
+                    placeFloatingMap(view, rect: mapRect)
+                } else if beside {
+                    let pane = CGSize(width: xOffset, height: max(200, bounds.height - bottomInset))
+                    let scale = min(1.5, min(pane.width / rect.width, pane.height / rect.height))
+                    view.bounds = CGRect(origin: .zero, size: rect.size)
+                    view.center = CGPoint(x: pane.width / 2, y: pane.height / 2)
+                    view.frameDidChange()
+                    view.transform = CGAffineTransform(scaleX: scale, y: scale)
+                } else if view.frame != rect {
+                    view.frame = rect
+                    view.frameDidChange()
+                }
+                continue
+            }
+            var frame = rect
+            frame.origin.x += xOffset
+            if shiftUp > 0, let mapRect = mapRect, rect.minY >= mapRect.maxY - 1 {
+                frame.origin.y -= shiftUp
+                if rect.maxY >= (beside ? terpSize.height : toldSize.height) - 1 { frame.size.height = max(0, bounds.height - frame.origin.y) }
+            }
+            view.transform = .identity
+            view.layer.mask = nil
+            if view.frame != frame {
+                view.frame = frame
+                view.frameDidChange()
+            }
+            if let buffer = view as? GlkBufferView { buffer.bottomInset = insetFor(buffer) }
+        }
+        orderWindowViews()
+    }
+
+    /// Status grids and other overlays stay above story text and background graphics.
+    private func orderWindowViews() {
+        var graphics: [UIView] = []
+        var buffers: [UIView] = []
+        var grids: [UIView] = []
+        for view in windowViews.values {
+            switch view.windowType {
+            case Int(wintype_TextBuffer): buffers.append(view)
+            case Int(wintype_TextGrid): grids.append(view)
+            default: graphics.append(view)
+            }
+        }
+        for view in graphics { sendSubviewToBack(view) }
+        for view in buffers { bringSubviewToFront(view) }
+        for view in grids { bringSubviewToFront(view) }
     }
 
     /// Called whenever the story text scrolls.
@@ -84,6 +278,7 @@ final class GlkDisplay: UIView {
     func apply(_ ops: [GlkUIOp]) {
         var touched = Set<Int>()
         let inputBefore = inputRequest
+        let bufferWasAtBottom = primaryBuffer?.isAtBottom ?? false
         var voiceOverText = ""
 
         for op in ops {
@@ -93,15 +288,19 @@ final class GlkDisplay: UIView {
 
             case .deleteWindow(let id):
                 if let view = windowViews.removeValue(forKey: id) { view.removeFromSuperview() }
+                terpRects.removeValue(forKey: id)
+                layoutIsDirty = true
                 lineWindows.removeValue(forKey: id)
                 charWindows.remove(id)
                 updateAccessibilityElements()
 
             case .sizeWindow(let id, let rect):
-                guard let view = windowViews[id] else { break }
-                view.frame = rect
-                view.frameDidChange()
-                if let buffer = view as? GlkBufferView { buffer.bottomInset = insetFor(buffer) }
+                guard windowViews[id] != nil else { break }
+                terpRects[id] = rect
+                measureMapRatio(id: id, rect: rect)
+                // Place the views now: drawing that follows in this batch must see the new size.
+                relayoutWindows()
+                layoutIsDirty = true
 
             case .print(let id, let text):
                 touched.insert(id)
@@ -190,8 +389,25 @@ final class GlkDisplay: UIView {
         }
 
         for view in windowViews.values { view.endBatch() }
+        if layoutIsDirty {
+            layoutIsDirty = false
+            relayoutWindows()
+            // Windows moving or changing size must not leave the story scrolled away from its end.
+            if bufferWasAtBottom { primaryBuffer?.scrollToBottom(animated: false) }
+            delegate?.displayLayoutDidChange(self)
+        }
+        if mapBackdrop.superlayer != nil, let id = mapWindowID, let graphics = windowViews[id] as? GlkGraphicsView {
+            tintBackdrop(graphics.backdropColor)
+        }
         if inputRequest != inputBefore { delegate?.displayInputRequestChanged(self) }
         if !voiceOverText.isEmpty { delegate?.display(self, didAppendTextForVoiceOver: voiceOverText) }
+    }
+
+    private func measureMapRatio(id: Int, rect: CGRect) {
+        guard automapLayoutEnabled, toldSize.height > 0,
+              isAutomapGraphicsWindow(id: id, referenceWidth: toldSize.width, referenceHeight: toldSize.height) else { return }
+        // Measured while the map is above the story; beside it, the ratio is already known.
+        if mapHeightRatio == nil || !besideActive { mapHeightRatio = rect.height / toldSize.height }
     }
 
     private func createWindow(id: Int, type: Int, hints: GlkHintTable) {
@@ -288,7 +504,7 @@ final class GlkDisplay: UIView {
         for id in windowViews.keys.sorted() {
             guard let view = windowViews[id] else { continue }
             var item = Snapshot.Window(id: id, type: view.windowType,
-                                       rect: [Double(view.frame.minX), Double(view.frame.minY), Double(view.frame.width), Double(view.frame.height)],
+                                       rect: { let r = terpRects[id] ?? view.frame; return [Double(r.minX), Double(r.minY), Double(r.width), Double(r.height)] }(),
                                        hints: view.hints)
             if let buffer = view as? GlkBufferView {
                 item.runs = SnapshotRun.runs(from: buffer.storage)
@@ -298,7 +514,7 @@ final class GlkDisplay: UIView {
             if let graphics = view as? GlkGraphicsView { item.bitmap = graphics.snapshot() }
             windows.append(item)
         }
-        return try? JSONEncoder().encode(Snapshot(windows: windows, size: [Double(bounds.width), Double(bounds.height)]))
+        return try? JSONEncoder().encode(Snapshot(windows: windows, size: [Double(toldSize.width), Double(toldSize.height)]))
     }
 
     /// Put back what was on screen. Returns the windows, so the session knows they exist.
@@ -309,8 +525,12 @@ final class GlkDisplay: UIView {
             createWindow(id: item.id, type: item.type, hints: item.hints)
             guard let view = windowViews[item.id], item.rect.count == 4 else { continue }
             let rect = CGRect(x: item.rect[0], y: item.rect[1], width: item.rect[2], height: item.rect[3])
+            terpRects[item.id] = rect
             view.frame = rect
             view.frameDidChange()
+            if view is GlkGraphicsView, rect.width >= CGFloat(snapshot.size.first ?? 0) * 0.9, snapshot.size.count == 2, snapshot.size[1] > 0, rect.height > 0 {
+                mapHeightRatio = rect.height / CGFloat(snapshot.size[1])
+            }
             if let buffer = view as? GlkBufferView, let runs = item.runs {
                 let text = SnapshotRun.attributedString(from: runs, sheet: styleSheet, windowType: buffer.windowType, hints: buffer.hints)
                 buffer.append(text)
@@ -323,6 +543,8 @@ final class GlkDisplay: UIView {
         layoutIfNeeded()
         for view in windowViews.values { view.endBatch() }
         primaryBuffer?.scrollToBottom(animated: false)
+        relayoutWindows()
+        delegate?.displayLayoutDidChange(self)
         return restored
     }
 

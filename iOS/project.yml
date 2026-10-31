@@ -170,6 +170,9 @@ targets:
       - path: App
       - path: ../application/FileSignature.m
       - path: ../application/FileSignature.h
+    resources:
+      - path: InfocomGameAssets
+        type: folder
     dependencies:
       - target: glulxe
         embed: true

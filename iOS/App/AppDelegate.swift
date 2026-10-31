@@ -4,6 +4,8 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Library.shared.importFromDocumentsFolder()
+        IFDBCoverFetcher.shared.scheduleMissingCovers()
+        InvisiCluesAssetFetcher.shared.scheduleMissingAssets()
         return true
     }
 
@@ -26,6 +28,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
         self.root = root
+        #if DEBUG
+        // `-SnapshotAfter 8` saves a picture of the window to Documents/snapshot.png (for checking layouts).
+        let delay = UserDefaults.standard.double(forKey: "SnapshotAfter")
+        let forced = UserDefaults.standard.double(forKey: "ForceBeside")
+        if forced > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + forced + 0.5) { NotificationCenter.default.post(name: .settingsDidChange, object: nil) }
+        }
+        if delay > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                let image = UIGraphicsImageRenderer(bounds: window.bounds).image { context in window.layer.render(in: context.cgContext) }
+                let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("snapshot.png")
+                try? image.pngData()?.write(to: url)
+            }
+        }
+        #endif
         if !connectionOptions.urlContexts.isEmpty { handle(connectionOptions.urlContexts) }
     }
 
@@ -35,6 +52,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         Library.shared.importFromDocumentsFolder()
+        IFDBCoverFetcher.shared.scheduleMissingCovers()
+        InvisiCluesAssetFetcher.shared.scheduleMissingAssets()
     }
 
     private func handle(_ contexts: Set<UIOpenURLContext>) {

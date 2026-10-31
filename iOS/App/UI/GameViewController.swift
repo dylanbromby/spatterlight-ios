@@ -55,7 +55,11 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
     private var lastUISnapshot = Date.distantPast
     private var forceNextSnapshot = false
     private let scrollToBottomButton = UIButton(type: .system)
+    private let menuButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), menu: nil)
+    private let mapButton = UIBarButtonItem(image: UIImage(systemName: "map.fill"), style: .plain, target: nil, action: nil)
     private var inputBarBottom: NSLayoutConstraint!
+    /// Called when the story area is tapped (the shell uses it to put the sidebar away).
+    var onStoryTapped: (() -> Void)?
     private var filePromptCompletion: ((String?) -> Void)?
     private var filePromptDestination: URL?
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
@@ -65,6 +69,9 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         let settings = Settings.shared
         styleSheet = GameViewController.makeStyleSheet(settings: settings, traits: UITraitCollection.current)
         display = GlkDisplay(styleSheet: styleSheet)
+        if StoryIFID.zMachineVersion(for: game) == 6 {
+            display.automapLayoutEnabled = false
+        }
         super.init(nibName: nil, bundle: nil)
         title = game.title
         navigationItem.largeTitleDisplayMode = .never
@@ -95,6 +102,7 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         scrollConfig.image = UIImage(systemName: "arrow.down")
         scrollConfig.cornerStyle = .capsule
         scrollToBottomButton.configuration = scrollConfig
+        styleScrollButton()
         scrollToBottomButton.accessibilityLabel = "Scroll to latest"
         scrollToBottomButton.alpha = 0
         scrollToBottomButton.translatesAutoresizingMaskIntoConstraints = false
@@ -127,9 +135,15 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         hideKeyboardTap.delegate = self
         display.addGestureRecognizer(hideKeyboardTap)
 
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), menu: makeMenu()),
-        ]
+        menuButton.menu = makeMenu()
+        mapButton.target = self
+        mapButton.action = #selector(mapTapped)
+        mapButton.accessibilityLabel = "Map"
+        mapButton.accessibilityHint = "Shows or hides the map"
+        display.mapVisible = Settings.shared.mapVisible
+        display.mapPlacement = Settings.shared.mapPlacement
+        display.mapFloats = Settings.shared.mapFloats
+        navigationItem.rightBarButtonItems = [menuButton]
 
         NotificationCenter.default.addObserver(self, selector: #selector(settingsChanged), name: .settingsDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
@@ -143,13 +157,21 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (self: GameViewController, _) in
             self.restyle()
         }
+        registerForTraitChanges([UITraitHorizontalSizeClass.self, UITraitVerticalSizeClass.self]) { (self: GameViewController, _) in
+            self.display.relayoutForBoundsChange()
+            self.syncTerpSize(force: true)
+        }
     }
 
     private func makeMenu() -> UIMenu {
-        UIMenu(children: [
-            UIAction(title: "Share Transcript", image: UIImage(systemName: "square.and.arrow.up")) { [weak self] _ in self?.shareTranscript() },
-            UIAction(title: "Restart Story", image: UIImage(systemName: "arrow.counterclockwise"), attributes: .destructive) { [weak self] _ in self?.confirmRestart() },
-        ])
+        var actions: [UIMenuElement] = []
+        actions.append(UIAction(title: "Game assets", image: UIImage(systemName: "archivebox")) { [weak self] _ in
+            guard let self else { return }
+            self.presentGameAssets(for: self.game)
+        })
+        actions.append(UIAction(title: "Share Transcript", image: UIImage(systemName: "square.and.arrow.up")) { [weak self] _ in self?.shareTranscript() })
+        actions.append(UIAction(title: "Restart Story", image: UIImage(systemName: "arrow.counterclockwise"), attributes: .destructive) { [weak self] _ in self?.confirmRestart() })
+        return UIMenu(children: actions)
     }
 
     override func viewDidLayoutSubviews() {
@@ -157,15 +179,51 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         let inset = max(0, view.bounds.maxY - inputBar.frame.minY)
         display.bottomInset = inset
 
-        let size = display.bounds.size
+        let size = display.terpSize
+        if GlkSession.debug { NSLog("GAME layout size=%@ started=%d", NSCoder.string(for: size), started ? 1 : 0) }
+
         guard size.width > 10, size.height > 10 else { return }
         if !started {
             started = true
+            display.toldSize = size
             startSession(size: size)
         } else {
-            session?.gameAreaDidChange(size)
+            syncTerpSize()
         }
         updateScrollButton()
+    }
+
+    /// Tell the interpreter how big the game area is, if that has changed.
+    private func syncTerpSize(force: Bool = false) {
+        let size = display.terpSize
+        guard started, size.width > 10, size.height > 10 else { return }
+        guard force || size != display.toldSize else { return }
+        display.toldSize = size
+        session?.gameAreaDidChange(size, force: force)
+    }
+
+    func displayLayoutDidChange(_ display: GlkDisplay) {
+        syncTerpSize()
+        updateMapButton()
+    }
+
+    private func updateMapButton() {
+        let items = navigationItem.rightBarButtonItems ?? []
+        let wanted = display.hasMap
+        let showing = items.contains(mapButton)
+        guard wanted != showing else {
+            mapButton.image = UIImage(systemName: Settings.shared.mapVisible ? "map.fill" : "map")
+            return
+        }
+        mapButton.image = UIImage(systemName: Settings.shared.mapVisible ? "map.fill" : "map")
+        navigationItem.rightBarButtonItems = wanted ? [menuButton, mapButton] : [menuButton]
+    }
+
+    @objc private func mapTapped() {
+        Settings.shared.mapVisible.toggle()
+        display.mapVisible = Settings.shared.mapVisible
+        mapButton.image = UIImage(systemName: Settings.shared.mapVisible ? "map.fill" : "map")
+        UIAccessibility.post(notification: .announcement, argument: Settings.shared.mapVisible ? "Map shown" : "Map hidden")
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -198,13 +256,16 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
 
         inputBar.setMode(.idle, showKeyRow: Settings.shared.showKeyRow, message: "Starting…")
         // A story that is still saving itself must finish before the next one looks for its autosave.
+        if GlkSession.debug { NSLog("GAME startSession whenIdle") }
         GlkSession.whenIdle { [weak self] in
+            if GlkSession.debug { NSLog("GAME idle; closing=%d", (self?.closing ?? true) ? 1 : 0) }
             guard let self = self, !self.closing else { return }
             self.launch(terp: terp, arguments: arguments, size: size)
         }
     }
 
     private func launch(terp: String, arguments: [String], size: CGSize) {
+        if GlkSession.debug { NSLog("GAME launch %@ size=%@", terp, NSCoder.string(for: size)) }
         let session = GlkSession(game: game, terpName: terp, arguments: arguments, theme: styleSheet,
                                  settings: Settings.shared, size: size)
         session.delegate = self
@@ -225,6 +286,7 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
         do {
             try session.start(environment: ["SPATTERLIGHT_AUTOSAVE_SIGNATURE": game.id])
         } catch {
+            NSLog("GAME start failed: %@", "\(error)")
             showAlert(title: "Could not start the story", message: error.localizedDescription)
         }
     }
@@ -326,6 +388,7 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
     }
 
     @objc private func storyTapped() {
+        onStoryTapped?()
         // Tapping the story puts the keyboard away so you can read.
         if inputBar.field.isFirstResponder {
             keyboardWanted = false
@@ -396,14 +459,27 @@ final class GameViewController: UIViewController, GlkSessionDelegate, GlkDisplay
     @objc private func settingsChanged() { restyle() }
     @objc private func contentSizeChanged() { restyle() }
 
+    /// The scroll-to-latest button takes the colours of the chosen theme.
+    private func styleScrollButton() {
+        let colors = styleSheet.colors
+        var config = scrollToBottomButton.configuration ?? UIButton.Configuration.filled()
+        config.baseBackgroundColor = colors.input
+        config.baseForegroundColor = colors.background
+        scrollToBottomButton.configuration = config
+        scrollToBottomButton.overrideUserInterfaceStyle = colors.isDark ? .dark : .light
+    }
+
     private func restyle() {
         styleSheet = GameViewController.makeStyleSheet(settings: Settings.shared, traits: traitCollection)
         view.backgroundColor = styleSheet.colors.background
         display.apply(styleSheet: styleSheet)
         inputBar.apply(colors: styleSheet.colors)
+        styleScrollButton()
         session?.updateStyleSheet(styleSheet)
         // The interpreter sizes its windows from the font size, so tell it.
-        session?.gameAreaDidChange(display.bounds.size, force: true)
+        display.mapPlacement = Settings.shared.mapPlacement
+        display.mapFloats = Settings.shared.mapFloats
+        syncTerpSize(force: true)
         navigationController?.navigationBar.overrideUserInterfaceStyle = styleSheet.colors.isDark ? .dark : .light
         overrideUserInterfaceStyle = Settings.shared.theme.palette == .system ? .unspecified : (styleSheet.colors.isDark ? .dark : .light)
     }

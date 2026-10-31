@@ -10,6 +10,7 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
     private let detailNavigation: UINavigationController
     private let placeholder = PlaceholderViewController()
     private var lastWideOverride: Bool?
+    private var lastPaneLayout: PaneLayout?
 
     init() {
         sideNavigation = UINavigationController(rootViewController: sidePane)
@@ -36,12 +37,24 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
         overrideUserInterfaceStyle = theme.palette == .system ? .unspecified : (theme.colors(systemIsDark: false).isDark ? .dark : .light)
     }
 
+    private var didChooseFirstColumn = false
+
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        // Starting on a narrow screen, the library is the first thing to see, not the empty story pane.
+        guard !didChooseFirstColumn else { return }
+        didChooseFirstColumn = true
+        if isCollapsed, !(detailNavigation.viewControllers.first is GameViewController) {
+            show(.primary)
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         paintWindow()
         // `-OpenGame <title>` on the command line opens a story at launch (handy for testing).
         if let title = UserDefaults.standard.string(forKey: "OpenGame"),
-           let game = Library.shared.games.first(where: { $0.title.localizedCaseInsensitiveContains(title) }) {
+           let game = Library.shared.games.last(where: { $0.title.localizedCaseInsensitiveContains(title) }) {
             open(game)
             #if DEBUG
             if UserDefaults.standard.bool(forKey: "ShowSettings") {
@@ -70,6 +83,26 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateSizeClassOverride()
+        updateColumnWidth()
+        updateSplitBehavior()
+    }
+
+    private var isPortrait: Bool { view.bounds.width < view.bounds.height }
+
+    /// In portrait (an unfolded Duo held upright) the side pane floats over the story rather than
+    /// squeezing it, so the story, and any map above it, keep the full width.
+    private func updateSplitBehavior() {
+        let behavior: UISplitViewController.SplitBehavior =
+            (Settings.shared.paneLayout == .automatic && isPortrait) ? .overlay : .tile
+        if preferredSplitBehavior != behavior { preferredSplitBehavior = behavior }
+    }
+
+    /// In portrait the window is narrow, so the side pane gets a bigger share of it.
+    private func updateColumnWidth() {
+        let base = CGFloat(Settings.shared.sidePaneWidthFraction)
+        let portrait = view.bounds.width < view.bounds.height
+        let fraction = portrait ? max(base, 0.55) : base
+        if preferredPrimaryColumnWidthFraction != fraction { preferredPrimaryColumnWidthFraction = fraction }
     }
 
     // MARK: Layout
@@ -77,15 +110,19 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
     @objc private func applyLayoutSettings() {
         let settings = Settings.shared
         primaryEdge = settings.sidePaneSide == .leading ? .leading : .trailing
-        preferredPrimaryColumnWidthFraction = CGFloat(settings.sidePaneWidthFraction)
+        updateColumnWidth()
         minimumPrimaryColumnWidth = 240
         maximumPrimaryColumnWidth = 560
 
-        switch settings.paneLayout {
-        case .single:
-            preferredDisplayMode = .secondaryOnly
-        case .automatic, .alwaysDual:
-            preferredDisplayMode = .oneBesideSecondary
+        // Only when the choice itself changes, so other settings do not bring a hidden side pane back.
+        if settings.paneLayout != lastPaneLayout {
+            lastPaneLayout = settings.paneLayout
+            switch settings.paneLayout {
+            case .single:
+                preferredDisplayMode = .secondaryOnly
+            case .automatic, .alwaysDual:
+                preferredDisplayMode = .oneBesideSecondary
+            }
         }
         lastWideOverride = nil
         updateSizeClassOverride()
@@ -119,10 +156,18 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
     }
 
     private func updateDetailItems() {
+        // The system supplies the sidebar button (and the back button when collapsed); adding
+        // our own displayModeButtonItem as well left a second, empty-looking button.
         guard let controller = detailNavigation.viewControllers.first as? GameViewController else { return }
-        // The sidebar button only makes sense when the two panes are shown separately.
-        controller.navigationItem.leftBarButtonItem = isCollapsed ? nil : displayModeButtonItem
-        controller.navigationItem.leftItemsSupplementBackButton = true
+        controller.navigationItem.leftBarButtonItem = nil
+        controller.navigationItem.leftItemsSupplementBackButton = false
+        controller.onStoryTapped = { [weak self] in self?.storyTapped() }
+    }
+
+    /// Tapping the story puts the sidebar away if it is showing.
+    private func storyTapped() {
+        guard !isCollapsed, displayMode != .secondaryOnly else { return }
+        hide(.primary)
     }
 
     func splitViewControllerDidCollapse(_ svc: UISplitViewController) { updateDetailItems() }
@@ -141,6 +186,7 @@ final class RootViewController: UISplitViewController, UISplitViewControllerDele
         detailNavigation.setViewControllers([controller], animated: false)
         updateDetailItems()
         show(.secondary)
+        if !isCollapsed, isPortrait, Settings.shared.paneLayout == .automatic { hide(.primary) }
     }
 
     @objc private func restartRequested(_ note: Notification) {

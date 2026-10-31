@@ -78,8 +78,10 @@ final class GlkBufferView: UIView, GlkWindowView, UITextViewDelegate {
     }
 
     func frameDidChange() {
+        // A story that was scrolled to the end stays at the end when the window changes size.
+        let wasAtBottom = isAtBottom || textView.frame.isEmpty
         textView.frame = bounds
-        updateInsets(keepBottom: false)
+        updateInsets(keepBottom: wasAtBottom)
     }
 
     override func layoutSubviews() {
@@ -420,8 +422,11 @@ final class GlkGridView: UIView, GlkWindowView {
             line.enumerateAttribute(.backgroundColor, in: NSRange(location: 0, length: line.length), options: []) { value, range, _ in
                 guard let color = value as? UIColor else { return }
                 context.setFillColor(color.cgColor)
-                context.fill(CGRect(x: margin + CGFloat(range.location) * cell.width, y: y,
-                                    width: CGFloat(range.length) * cell.width, height: cell.height))
+                // A highlighted run that reaches either end of the row runs on to the window's edge,
+                // so a status bar has no uncoloured strip beside the margin or the leftover width.
+                let left = range.location == 0 ? 0 : margin + CGFloat(range.location) * cell.width
+                let right = NSMaxRange(range) >= line.length ? bounds.width : margin + CGFloat(NSMaxRange(range)) * cell.width
+                context.fill(CGRect(x: left, y: y, width: right - left, height: cell.height))
             }
             let foregroundOnly = NSMutableAttributedString(attributedString: line)
             foregroundOnly.removeAttribute(.backgroundColor, range: NSRange(location: 0, length: foregroundOnly.length))
@@ -514,6 +519,9 @@ final class GlkGraphicsView: UIView, GlkWindowView {
 
     required init?(coder: NSCoder) { fatalError() }
 
+    /// The colour the story gave this window, for a backdrop drawn behind it.
+    var backdropColor: UIColor { sampledBackground ?? backgroundColorValue }
+
     private var backgroundColorValue: UIColor {
         backgroundValue < 0 ? sheet.colors.background : GlkStyleSheet.color(UInt32(bitPattern: backgroundValue))
     }
@@ -544,7 +552,121 @@ final class GlkGraphicsView: UIView, GlkWindowView {
         present()
     }
 
-    private func present() { layer.contents = context?.makeImage() }
+    /// When the window floats over the story, only its background is see-through: the picture's
+    /// background colour is cut out of the bitmap and the rest (boxes, lines, lettering) stays solid.
+    var floating = false {
+        didSet {
+            guard oldValue != floating else { return }
+            isOpaque = !floating
+            layer.isOpaque = !floating
+            updateBackground()
+            present()
+        }
+    }
+
+    private func updateBackground() {
+        backgroundColor = floating ? .clear : backgroundColorValue
+    }
+
+    private var needsPresent = false
+    private var lastShown: CGImage?
+
+    private func present(animated: Bool = false) {
+        guard let image = context?.makeImage() else { layer.contents = nil; return }
+        layer.contents = floating ? (keyedOutBackground(of: image) ?? image) : image
+        defer { lastShown = image }
+        guard animated, !UIAccessibility.isReduceMotionEnabled, bounds.width > 0, bounds.height > 0,
+              let old = lastShown, old.width == image.width, old.height == image.height,
+              let shift = GlkGraphicsView.slide(from: old, to: image, pixelScale: pixelScale),
+              shift != .zero else { return }
+        // Start from where the old picture's content was and glide to the new one.
+        let from = CGRect(x: shift.x / bounds.width, y: shift.y / bounds.height, width: 1, height: 1)
+        let animation = CABasicAnimation(keyPath: "contentsRect")
+        animation.fromValue = from
+        animation.toValue = CGRect(x: 0, y: 0, width: 1, height: 1)
+        animation.duration = 0.3
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        layer.add(animation, forKey: "slide")
+    }
+
+    /// A small greyscale copy, six pixels to one.
+    private static func thumbnail(_ image: CGImage) -> (pixels: [UInt8], width: Int, height: Int)? {
+        let width = max(1, image.width / 6), height = max(1, image.height / 6)
+        var pixels = [UInt8](repeating: 0, count: width * height)
+        let ok = pixels.withUnsafeMutableBytes { buffer -> Bool in
+            guard let context = CGContext(data: buffer.baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width,
+                                          space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue) else { return false }
+            context.interpolationQuality = .low
+            context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+            return true
+        }
+        return ok ? (pixels, width, height) : nil
+    }
+
+    /// How far the picture's content moved between two frames, in points, if it moved along a line
+    /// (as a map does when you step from room to room); nil if it did not just slide.
+    private static func slide(from old: CGImage, to new: CGImage, pixelScale: CGFloat) -> CGPoint? {
+        guard let a = thumbnail(old), let b = thumbnail(new) else { return nil }
+        let width = a.width, height = a.height
+        let reach = 64
+        func difference(dx: Int, dy: Int) -> Double {
+            // Compare old at p with new at p + shift.
+            let x0 = max(0, -dx), x1 = min(width, width - dx)
+            let y0 = max(0, -dy), y1 = min(height, height - dy)
+            guard x1 - x0 > width / 3, y1 - y0 > height / 3 else { return .infinity }
+            var total = 0
+            for y in y0..<y1 {
+                let rowA = y * width, rowB = (y + dy) * width + dx
+                for x in x0..<x1 { total += abs(Int(a.pixels[rowA + x]) - Int(b.pixels[rowB + x])) }
+            }
+            return Double(total) / Double((x1 - x0) * (y1 - y0))
+        }
+        let baseline = difference(dx: 0, dy: 0)
+        var best = (dx: 0, dy: 0, value: baseline)
+        for step in -reach...reach where step != 0 {
+            let horizontal = difference(dx: step, dy: 0)
+            if horizontal < best.value { best = (step, 0, horizontal) }
+            let vertical = difference(dx: 0, dy: step)
+            if vertical < best.value { best = (0, step, vertical) }
+        }
+        guard best.dx != 0 || best.dy != 0, best.value < baseline * 0.6 else { return nil }
+        if GlkSession.debug { NSLog("SLIDE dx=%d dy=%d best=%.2f base=%.2f", best.dx, best.dy, best.value, baseline) }
+        let points = 6 / pixelScale
+        return CGPoint(x: CGFloat(best.dx) * points, y: CGFloat(best.dy) * points)
+    }
+
+    /// The picture's own background, as found in the bitmap: the story may fill the window with a colour
+    /// of its own without ever naming it as the window's background.
+    private var sampledBackground: UIColor?
+
+    private func keyedOutBackground(of image: CGImage) -> CGImage? {
+        guard let canvas = CGContext(data: nil, width: image.width, height: image.height, bitsPerComponent: 8, bytesPerRow: 0,
+                                     space: CGColorSpaceCreateDeviceRGB(),
+                                     bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue),
+              let data = canvas.data else { return nil }
+        canvas.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
+        let width = image.width, height = image.height
+        let rowWords = canvas.bytesPerRow / 4
+        let pixels = data.bindMemory(to: UInt32.self, capacity: rowWords * height)
+        // The most common colour in a sparse sample is the background.
+        var counts: [UInt32: Int] = [:]
+        for row in 0..<24 {
+            for column in 0..<24 {
+                let x = (column * width) / 24 + width / 48
+                let y = (row * height) / 24 + height / 48
+                counts[pixels[y * rowWords + x] & 0x00ffffff, default: 0] += 1
+            }
+        }
+        guard let key = counts.max(by: { $0.value < $1.value })?.key else { return nil }
+        sampledBackground = UIColor(red: CGFloat((key >> 16) & 0xff) / 255, green: CGFloat((key >> 8) & 0xff) / 255,
+                                    blue: CGFloat(key & 0xff) / 255, alpha: 1)
+        // Make every pixel of that colour fully transparent.
+        for y in 0..<height {
+            let row = pixels + y * rowWords
+            for x in 0..<width where row[x] & 0x00ffffff == key { row[x] = 0 }
+        }
+        return canvas.makeImage()
+    }
 
     func fill(_ rects: [(color: UInt32, rect: CGRect)]) {
         guard let context = context else { return }
@@ -557,19 +679,19 @@ final class GlkGraphicsView: UIView, GlkWindowView {
             context.setFillColor(color.cgColor)
             context.fill(item.rect)
         }
-        present()
+        needsPresent = true
     }
 
     func clear() {
         guard let context = context else { return }
         context.setFillColor(backgroundColorValue.cgColor)
         context.fill(CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
-        present()
+        needsPresent = true
     }
 
     func setBackground(_ color: Int32) {
         backgroundValue = color
-        backgroundColor = backgroundColorValue
+        updateBackground()
     }
 
     func draw(image: UIImage, x: Int, y: Int, width: Int, height: Int, rule: UInt32) {
@@ -593,13 +715,20 @@ final class GlkGraphicsView: UIView, GlkWindowView {
         context.scaleBy(x: 1, y: -1)
         context.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
         context.restoreGState()
-        present()
+        needsPresent = true
     }
 
-    func endBatch() {}
+    /// Whatever a batch of drawing leaves is shown once, at its end; if the picture has only slid
+    /// (a map recentring as you walk), it slides rather than jumps.
+    func endBatch() {
+        guard needsPresent else { return }
+        needsPresent = false
+        present(animated: true)
+    }
+
     func applyStyleSheet(_ newSheet: GlkStyleSheet) {
         sheet = newSheet
-        if backgroundValue < 0 { backgroundColor = newSheet.colors.background }
+        if backgroundValue < 0 { updateBackground() }
     }
 
     @objc private func tapped(_ gesture: UITapGestureRecognizer) {

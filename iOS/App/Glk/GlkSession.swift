@@ -437,6 +437,9 @@ final class GlkSession {
         var window = windows[Int(req.a1)]
         var justRestored = false
         switch Int(req.cmd) {
+        case NEXTEVENT:
+            // An autorestored game can go straight to waiting for input, never drawing anything.
+            _ = restoreScreenIfNeeded()
         case PRINT, UNPRINT, INITLINE, INITCHAR, INITMOUSE, INITLINK:
             if restoreScreenIfNeeded() {
                 justRestored = true
@@ -745,9 +748,30 @@ final class GlkSession {
         DispatchQueue.main.sync { list = restorer() }
         guard let restored = list, !restored.isEmpty else { return false }
         restoreWindows(restored)
+        restoreInputRequests()
         // The player may have changed settings since: have the interpreter send the window sizes again.
         enqueue(arrangeEvent(force: true))
         return true
+    }
+
+    /// Glulxe does not ask for input again after restoring: the request travels in the archived
+    /// windows (autosave.plist, an NSKeyedArchiver file). Read it back so the input bar knows
+    /// what the story is waiting for.
+    private func restoreInputRequests() {
+        guard let url = AutosaveStore.directory(for: game, terp: terpName)?.appendingPathComponent("autosave.plist"),
+              let data = try? Data(contentsOf: url),
+              let archive = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any],
+              let objects = archive["$objects"] as? [Any] else { return }
+        func flag(_ dict: [String: Any], _ key: String) -> Bool { ((dict[key] as? NSNumber)?.intValue ?? 0) != 0 }
+        for case let dict as [String: Any] in objects {
+            guard let peer = (dict["peer"] as? NSNumber)?.intValue, windows[peer] != nil else { continue }
+            if flag(dict, "line_request") {
+                post(.requestLine(id: peer, initial: "", capacity: (dict["cap"] as? NSNumber)?.intValue ?? 256))
+            }
+            if flag(dict, "char_request") { post(.requestChar(id: peer)) }
+            if flag(dict, "mouse_request") { post(.requestMouse(id: peer)) }
+            if flag(dict, "hyper_request") { post(.requestLink(id: peer)) }
+        }
     }
 
     private func setHint(windowType: Int, style: Int, hint: Int, value: Int32?) {

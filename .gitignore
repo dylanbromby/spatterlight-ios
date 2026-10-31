@@ -14,6 +14,8 @@
 
 .DS_Store
 
+tools/.fetch-venv/
+
 # c.f. http://www.westwind.com/reference/os-x/invisibles.html
 
 .Trashes

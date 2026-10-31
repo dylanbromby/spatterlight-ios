@@ -14,6 +14,9 @@ final class SettingsModel: ObservableObject {
     @Published var haptics: Bool { didSet { store.haptics = haptics } }
     @Published var announceText: Bool { didSet { store.announceText = announceText } }
     @Published var showKeyRow: Bool { didSet { store.showKeyRow = showKeyRow } }
+    @Published var mapPlacement: MapPlacement { didSet { store.mapPlacement = mapPlacement } }
+    @Published var mapFloats: Bool { didSet { store.mapFloats = mapFloats } }
+    @Published var fetchIFDBCovers: Bool { didSet { store.fetchIFDBCovers = fetchIFDBCovers } }
 
     init() {
         theme = store.theme
@@ -26,6 +29,9 @@ final class SettingsModel: ObservableObject {
         haptics = store.haptics
         announceText = store.announceText
         showKeyRow = store.showKeyRow
+        mapPlacement = store.mapPlacement
+        mapFloats = store.mapFloats
+        fetchIFDBCovers = store.fetchIFDBCovers
     }
 }
 
@@ -93,9 +99,21 @@ struct SettingsView: View {
                 Section("Playing") {
                     Toggle("Autosave and resume", isOn: $model.autosave)
                     Toggle("Show pictures", isOn: $model.showGraphics)
+                    Toggle("Floating map in portrait", isOn: $model.mapFloats)
+                    Picker("Map in landscape", selection: $model.mapPlacement) {
+                        ForEach(MapPlacement.allCases) { Text($0.title).tag($0) }
+                    }
                     Toggle("Keys row for “press any key”", isOn: $model.showKeyRow)
                     Toggle("Haptic feedback", isOn: $model.haptics)
                     Toggle("Read new text aloud with VoiceOver", isOn: $model.announceText)
+                }
+
+                Section {
+                    Toggle("Download cover art from IFDB", isOn: $model.fetchIFDBCovers)
+                } header: {
+                    Text("Library")
+                } footer: {
+                    Text("IFDB fills in missing covers and descriptions. Infocom box art and maps are bundled with the app.")
                 }
 
                 Section {

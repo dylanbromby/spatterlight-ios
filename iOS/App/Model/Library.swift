@@ -150,6 +150,27 @@ struct BlorbReader {
         }
         return Metadata(title: element("title"), author: element("author"), summary: element("description"))
     }
+
+    var ifidsFromMetadata: [String] {
+        guard let chunk = chunks.first(where: { $0.type == "IFmd" }),
+              let xml = String(data: data.subdata(in: chunk.range), encoding: .utf8) else { return [] }
+        var ids: [String] = []
+        var search = xml.startIndex
+        while search < xml.endIndex,
+              let open = xml.range(of: "<ifid>", range: search..<xml.endIndex),
+              let close = xml.range(of: "</ifid>", range: open.upperBound..<xml.endIndex) {
+            let text = String(xml[open.upperBound..<close.lowerBound]).trimmingCharacters(in: .whitespacesAndNewlines)
+            if !text.isEmpty { ids.append(text) }
+            search = close.upperBound
+        }
+        return ids
+    }
+
+    var executableData: Data? {
+        guard let entry = index.first(where: { $0.usage == "Exec" && $0.number == 0 }),
+              let chunk = chunk(atOffset: entry.offset) else { return nil }
+        return data.subdata(in: chunk.range)
+    }
 }
 
 enum XMLEntities {
@@ -178,8 +199,15 @@ final class Library {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Saved Games", isDirectory: true)
     }
     private static var indexURL: URL { supportDirectory.appendingPathComponent("library.json") }
+    private static let customOrderKey = "libraryCustomOrder"
 
     private(set) var games: [GameRecord] = []
+
+    /// When true, list order follows `games` array order instead of recent activity.
+    var usesCustomOrder: Bool {
+        get { UserDefaults.standard.bool(forKey: Self.customOrderKey) }
+        set { UserDefaults.standard.set(newValue, forKey: Self.customOrderKey) }
+    }
 
     private init() {
         try? FileManager.default.createDirectory(at: Library.gamesDirectory, withIntermediateDirectories: true)
@@ -192,14 +220,46 @@ final class Library {
         games = decoded.filter { FileManager.default.fileExists(atPath: $0.fileURL.path) }
     }
 
-    private func save() {
+    private func save(notify: Bool = true) {
         guard let data = try? JSONEncoder().encode(games) else { return }
         try? FileManager.default.createDirectory(at: Library.supportDirectory, withIntermediateDirectories: true)
         try? data.write(to: Library.indexURL, options: .atomic)
-        NotificationCenter.default.post(name: .libraryDidChange, object: self)
+        if notify {
+            NotificationCenter.default.post(name: .libraryDidChange, object: self)
+        }
     }
 
     func game(withID id: String) -> GameRecord? { games.first { $0.id == id } }
+
+    func gamesForList(matching query: String) -> [GameRecord] {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        let filtered: [GameRecord]
+        if trimmed.isEmpty {
+            filtered = games
+        } else {
+            filtered = games.filter {
+                $0.title.localizedCaseInsensitiveContains(trimmed) ||
+                ($0.author ?? "").localizedCaseInsensitiveContains(trimmed)
+            }
+        }
+        if usesCustomOrder { return filtered }
+        return filtered.sorted { ($0.lastPlayed ?? $0.dateAdded) > ($1.lastPlayed ?? $1.dateAdded) }
+    }
+
+    /// Persists a new order after the user drags rows in the library.
+    func applyDisplayOrder(_ ids: [String]) {
+        var ordered: [GameRecord] = []
+        var pool = games
+        for id in ids {
+            guard let index = pool.firstIndex(where: { $0.id == id }) else { continue }
+            ordered.append(pool.remove(at: index))
+        }
+        ordered.append(contentsOf: pool)
+        games = ordered
+        usesCustomOrder = true
+        // Collection view already reflects the drag; reloading here races the reorder transaction.
+        save(notify: false)
+    }
 
     enum ImportError: LocalizedError {
         case unreadable(String)
@@ -225,7 +285,10 @@ final class Library {
         guard info.format != .unsupported else { throw ImportError.unsupported(url.lastPathComponent) }
 
         let id = FileSignature.signature(from: data)
-        if let existing = game(withID: id) { return existing }
+        if let existing = game(withID: id) {
+            IFDBCoverFetcher.shared.schedule(gameID: existing.id)
+            return existing
+        }
 
         let title = info.title ?? url.deletingPathExtension().lastPathComponent
         var record = GameRecord(id: id, title: title, author: info.author, summary: info.summary,
@@ -238,7 +301,38 @@ final class Library {
         }
         games.append(record)
         save()
+        IFDBCoverFetcher.shared.schedule(gameID: record.id)
+        InvisiCluesAssetFetcher.shared.schedule(gameID: record.id)
         return record
+    }
+
+    func applyIFDBListing(gameID: String, parsed: IFDBCoverFetcher.ParsedListing, coverData: Data?) {
+        guard let index = games.firstIndex(where: { $0.id == gameID }) else { return }
+        var record = games[index]
+        var changed = false
+        if let title = parsed.title, !title.isEmpty, record.title != title {
+            record.title = title
+            changed = true
+        }
+        if let author = parsed.author, !author.isEmpty {
+            if record.author != author { record.author = author; changed = true }
+        }
+        if let summary = parsed.summary, !summary.isEmpty {
+            let cleaned = IFDBCoverFetcher.cleanSummary(summary) ?? summary
+            if record.summary != cleaned { record.summary = cleaned; changed = true }
+        }
+        if let coverData, let image = UIImage(data: coverData), let png = image.pngData() {
+            let missing = !FileManager.default.fileExists(atPath: record.coverURL.path)
+            if !record.hasCover || missing {
+                try? FileManager.default.createDirectory(at: record.directoryURL, withIntermediateDirectories: true)
+                try? png.write(to: record.coverURL, options: .atomic)
+                record.hasCover = true
+                changed = true
+            }
+        }
+        guard changed else { return }
+        games[index] = record
+        save()
     }
 
     /// Story files dropped into this app's folder in the Files app are added to the library

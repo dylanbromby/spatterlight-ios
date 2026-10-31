@@ -151,6 +151,16 @@ enum PaneLayout: String, Codable, CaseIterable, Identifiable {
     }
 }
 
+/// Where a map window (a picture window above the story) goes on a wide, landscape screen.
+enum MapPlacement: String, Codable, CaseIterable, Identifiable {
+    /// The story on one side, the map on the other.
+    case beside
+    /// Stacked, as the story asks for it.
+    case above
+    var id: String { rawValue }
+    var title: String { self == .beside ? "Beside the story" : "Above the story" }
+}
+
 enum PaneSide: String, Codable, CaseIterable, Identifiable {
     case leading, trailing
     var id: String { rawValue }
@@ -237,9 +247,33 @@ final class Settings {
         set { save(newValue, key: "showKeyRow") }
     }
 
+    var mapPlacement: MapPlacement {
+        get { load("mapPlacement", default: .beside) }
+        set { save(newValue, key: "mapPlacement") }
+    }
+
+    /// In portrait on a wide screen, float the map over the story's corner instead of stacking it above.
+    var mapFloats: Bool {
+        get { load("mapFloats", default: true) }
+        set { save(newValue, key: "mapFloats") }
+    }
+
+    /// Whether a story's map is showing. Changed from the map button, so it does not restyle everything.
+    var mapVisible: Bool {
+        get { defaults.object(forKey: "mapVisible") as? Bool ?? true }
+        set { defaults.set(newValue, forKey: "mapVisible") }
+    }
+
     /// Which Z-machine interpreter number Bocfel reports (1-11); 6 is IBM PC.
     var zMachineTerp: Int {
         get { load("zMachineTerp", default: 6) }
         set { save(newValue, key: "zMachineTerp") }
     }
+
+    /// When a story has no embedded cover, look up cover art on IFDB and save it locally.
+    var fetchIFDBCovers: Bool {
+        get { load("fetchIFDBCovers", default: true) }
+        set { save(newValue, key: "fetchIFDBCovers") }
+    }
+
 }
