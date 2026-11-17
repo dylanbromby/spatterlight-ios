@@ -108,6 +108,14 @@ download() {                            # download URL -> cache, echo the path
 # extract ARCHIVE MEMBER -> DEST.  MEMBER may reach through nested archives,
 # "outer.zip|inner/game.taf": the 2006 AIF mini-comp bundle packs each entry as
 # the zip its author submitted, and unzip cannot descend on its own.
+can_bsdtar() {
+  command -v bsdtar >/dev/null 2>&1 || return 1
+  # VU#604762: libarchive-backed extractors can mishandle Unicode path
+  # collisions on macOS APFS. Keep the fallback for the few .rar/.7z bundles,
+  # but do not use it on macOS unless the caller explicitly accepts that risk.
+  [ "$(uname -s 2>/dev/null)" != Darwin ] || [ "${SCARIER_ALLOW_BSDTAR_ON_MACOS:-}" = 1 ]
+}
+
 extract() {
   _arc=$1 _mem=$2 _dst=$3 _prev="" _n=0
   while :; do
@@ -116,9 +124,9 @@ extract() {
              _n=$((_n + 1)); _out="$_dst.nest$_n" ;;
       *)     _inner=""; _out="$_dst" ;;
     esac
-    # unzip first; bsdtar (libarchive) also reads the few .rar/.7z bundles
+    # unzip first; bsdtar (libarchive) also reads the few .rar/.7z bundles.
     if { unzip -p "$_arc" "$_mem" > "$_out" 2>/dev/null < /dev/null && [ -s "$_out" ]; } ||
-       { command -v bsdtar > /dev/null &&
+       { can_bsdtar &&
          bsdtar -xOf "$_arc" "$_mem" > "$_out" 2>/dev/null < /dev/null && [ -s "$_out" ]; }
     then
       # Safe to drop the enclosing archive now that unzip has finished reading it
